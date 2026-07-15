@@ -1,0 +1,14 @@
+{
+  "color": {
+    "focus": {
+      "primary": {
+        "value": "{color.gray.50}"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "{color.gray.50}"
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+    "spacing": {
+        "component": {
+            "round": {
+                "xs": {
+                    "value": "{spacing.2}"
+                },
+                "sm": {
+                    "value": "{spacing.4}"
+                },
+                "md": {
+                    "value": "{spacing.8}"
+                },
+                "lg": {
+                    "value": "{spacing.16}"
+                }
+            },
+            "padding": {
+                "sm": {
+                    "value": "{spacing.2}"
+                },
+                "md": {
+                    "value": "{spacing.4}"
+                },
+                "lg": {
+                    "value": "{spacing.6}"
+                }
+            },
+            "gap": {
+                "sm": {
+                    "value": "{spacing.2}"
+                },
+                "md": {
+                    "value": "{spacing.4}"
+                },
+                "lg": {
+                    "value": "{spacing.6}"
+                }
+            }
+        },
+        "layout": {
+            "section": {
+                "value": "{spacing.16}"
+            },
+            "container-padding": {
+                "value": "{spacing.6}"
+            },
+            "page-margin": {
+                "value": "{spacing.8}"
+            }
+        },
+        "stack": {
+            "xs": {
+                "value": "{spacing.1}"
+            },
+            "sm": {
+                "value": "{spacing.2}"
+            },
+            "md": {
+                "value": "{spacing.4}"
+            },
+            "lg": {
+                "value": "{spacing.6}"
+            },
+            "xl": {
+                "value": "{spacing.8}"
+            }
+        }
+    }
+}
