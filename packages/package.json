@@ -1,0 +1,9 @@
+{
+  "name": "@bds",
+  "private": true,
+  "type": "module",
+  "scripts": {
+  },
+  "main": "src/index.ts",
+  "exports": { ".": "./src/index.ts" }
+}
