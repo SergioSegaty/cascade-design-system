@@ -1,0 +1,11 @@
+{
+  "name": "@bds/types",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -b"
+  }
+}
