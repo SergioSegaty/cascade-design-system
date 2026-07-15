@@ -1,0 +1,14 @@
+{
+  "name": "@bds/styles",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./accessibility.css": "./dist/accessibility.css",
+    "./dark.css": "./dist/dark.css",
+    "./light.css": "./dist/light.css"
+  }
+}
