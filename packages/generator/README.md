@@ -136,7 +136,7 @@ A CSS output (custom properties) is also planned for this stage. Today that outp
 
 ## Roadmap
 
-- [ ] Move CSS custom property generation into the generator itself (replacing the current standalone Style Dictionary step) so TS and CSS outputs are generated from one resolved tree.
+- [x] Move CSS custom property generation into the generator itself (replacing the current standalone Style Dictionary step) so TS and CSS outputs are generated from one resolved tree.
 - [ ] Additional output targets (e.g. platform-specific formats) fed by the same resolved `TreeNode`.
 
 ## Directory Reference
@@ -150,4 +150,4 @@ A CSS output (custom properties) is also planned for this stage. Today that outp
 | `registry.ts` | `TokenRegistry` — flat id-indexed store of all tokens. |
 | `resolver.ts` | `AliasResolver` — recursively resolves alias values using the registry. |
 | `tree-builder.ts` | `TreeBuilder` — converts flat token lists into a nested tree, per-file, per-classification. |
-| `serializer.ts` *(planned/expand as needed)* | Emits the generated `.ts` (and future `.css`) output from the final tree. |
+| `serializer.ts` | Emits the generated `{.ts/.js}` and `.css` output.
