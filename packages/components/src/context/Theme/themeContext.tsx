@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import type { Theme } from '@bds/types';
-export type ThemeModeKeys = keyof typeof Theme.theme;
+export type ThemeModeKeys = keyof typeof Theme.themes;
 
 type ThemeContextType = {
   currentTheme: ThemeModeKeys;
