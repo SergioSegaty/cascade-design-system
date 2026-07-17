@@ -1,14 +1,13 @@
+import type { Token, TreeNode } from '@types';
 import { isToken } from './typeguards.js';
-import type { Token } from './types.js';
 
-export function parseTokens(object: Record<string, unknown> | string, source: string) {
+export function parseTokens(object: TreeNode, source: string) {
   const tokens: Token[] = [];
   visitNode(object, [], tokens, source);
   return tokens;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function visitNode(node: any, currentPath: string[], tokens: Token[], source: string) {
+function visitNode(node: TreeNode, currentPath: string[], tokens: Token[], source: string) {
   for (const [key, obj] of Object.entries(node)) {
     const nextPath = [...currentPath, key];
     const isTheme = source.includes('Theme');
@@ -23,7 +22,7 @@ function visitNode(node: any, currentPath: string[], tokens: Token[], source: st
       }
       tokens.push(newToken);
     } else {
-      visitNode(obj, nextPath, tokens, source);
+      visitNode(obj as TreeNode, nextPath, tokens, source);
     }
   }
 }

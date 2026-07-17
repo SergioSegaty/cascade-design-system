@@ -1,8 +1,4 @@
-import type { ClassifiedTokens, Token, TokenSourceFile } from './types.js';
-
-type TreeNode = {
-  [key: string]: TreeNode | Token['value'];
-};
+import type { ClassifiedTokens, Token, TokenSourceFile, TreeNode } from './types.js';
 
 export class TreeBuilder {
   buildBranch(keys: string[]) {

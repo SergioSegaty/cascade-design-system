@@ -1,8 +1,9 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
-import type { TokenSourceFile } from './types.js';
+import type { TokenSourceFile, TreeNode } from './types.js';
 import { classifyTokens } from './classifier.js';
 import { parseTokens } from './parser.js';
+import { capitalizeWord } from '../utils.js';
 
 export async function getFiles(directory: string, extension = '.json'): Promise<string[]> {
   const directories = await readdir(directory, {
@@ -45,8 +46,8 @@ async function readJson<T = unknown>(path: string): Promise<T> {
 async function readTokenFile(
   currentPath: string,
   extension = '.json',
-): Promise<[string, Record<string, unknown>]> {
-  const parsedObject = await readJson<Record<string, unknown>>(currentPath);
+): Promise<[string, TreeNode]> {
+  const parsedObject = await readJson<TreeNode>(currentPath);
   const paths = currentPath.replace(extension, '');
 
   return [paths, parsedObject];
@@ -57,10 +58,12 @@ async function getTokenFiles(filesDir: string[]) {
 
   for (const fileDir of filesDir) {
     const [tokenPath, tokenFile] = await readTokenFile(fileDir);
+    const paths = tokenPath.split('/');
 
     const tokenSource: TokenSourceFile = {
+      name: capitalizeWord(paths.at(-1)),
       path: tokenPath,
-      segments: tokenPath.split('/'),
+      segments: paths,
       tokens: parseTokens(tokenFile, tokenPath),
     };
 

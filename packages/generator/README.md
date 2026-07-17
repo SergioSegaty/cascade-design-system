@@ -85,13 +85,24 @@ Key behaviors:
 
 ### 4. Resolve Aliases
 
-Tokens can reference other tokens as their value (an "alias"). `AliasResolver` takes the populated `TokenRegistry` and walks every token's value:
+Tokens can reference other tokens as their value (an "alias"). `AliasResolver` wraps a populated `TokenRegistry` and walks every token's value:
 
 - If the value isn't an alias (`isValueAlias` returns false), it's returned as-is.
-- If it is an alias, the referenced token is looked up in the registry (`getOrThrow`) and its value is resolved **recursively** — so alias chains (an alias pointing to another alias) resolve all the way down to a concrete value.
+- If it is an alias, `parseAlias` extracts the referenced token id, which is then looked up in the registry and resolved **recursively** — so alias chains (an alias pointing to another alias) flatten all the way down to a concrete value.
+- Resolved values are cached by id, so a token referenced by multiple aliases is only ever resolved once.
+- Circular aliases are detected before they can blow the call stack: a `resolving` set tracks ids currently being resolved. If an id is hit while it's still marked as resolving, the resolver throws with the full cycle path (e.g. `color.a -> color.b -> color.a`) rather than a generic recursion error.
+- A broken alias — one pointing to an id that doesn't exist in the registry — fails with the same kind of context: the error includes the chain of aliases that led to the dead end, so you can trace exactly which reference is broken and how it was reached, rather than a bare "not found" error.
 
-This runs over the same `ClassifiedTokens` structure (`resolveClassified`), preserving the primitives/semanticBase/themes shape but replacing every value with its fully-dereferenced form. By the time this stage completes, no token value in the pipeline still points at another token — everything is a concrete value.
+**Entry points:**
 
+| Method | Use case |
+|---|---|
+| `resolve(token)` | Resolve a single token |
+| `resolveList(tokens)` | Resolve an array of tokens (safe on `undefined`) |
+| `resolveFile(file)` | Resolve every token in a `TokenSourceFile` |
+| `resolveClassified(tokens)` | Resolve an entire `ClassifiedTokens` tree — primitives, semantic base, and every theme — in one call |
+
+In practice, `resolveClassified` is the one the pipeline calls directly after classification; the other methods exist so individual files, lists, or tokens can be resolved in isolation (useful for tests or partial re-generation).
 ### 5. Build Tree
 
 `TreeBuilder` converts the flat, alias-resolved token lists back into a nested object shape, using each token's `path` as the sequence of keys to descend/create.

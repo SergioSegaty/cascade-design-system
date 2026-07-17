@@ -6,12 +6,52 @@ import type { ClassifiedTokens, Token, TokenSourceFile, TokenValue } from './typ
 export class AliasResolver {
   constructor(private readonly registry: TokenRegistry) {}
 
+  private cache = new Map<string, TokenValue>();
+  private resolving = new Set<string>();
+  private stack: string[] = [];
+
+  private throwCycleError(alias: string) {
+    const start = this.stack.indexOf(alias)!;
+
+    const cycle = [...this.stack.slice(start), alias].join(' -> ');
+
+    throw new Error(`Circular alias detected: ${cycle}`);
+  }
+
+  private getTokenOrThrow(alias: string): Token {
+    try {
+      return this.registry.getOrThrow(alias);
+    } catch (cause) {
+      const chain = [...this.stack].join(' -> ');
+      throw new Error(`Unresolved alias "${alias}" (chain: ${chain})`, { cause });
+    }
+  }
+
   private resolveValue(value: TokenValue): TokenValue {
-    if (!isValueAlias(value)) return value;
+    if (!isValueAlias(value)) {
+      return value;
+    }
 
-    const token = this.registry.getOrThrow(parseAlias(value));
+    value = parseAlias(value);
 
-    return this.resolveValue(token.value);
+    const cached = this.cache.get(value);
+
+    if (cached) return cached;
+
+    if (this.resolving.has(value)) this.throwCycleError(value);
+
+    this.resolving.add(value);
+    this.stack.push(value);
+    try {
+      const token = this.getTokenOrThrow(value);
+      const resolved = this.resolveValue(token.value);
+      this.cache.set(value, resolved);
+
+      return resolved;
+    } finally {
+      this.stack.pop();
+      this.resolving.delete(value);
+    }
   }
 
   resolve(token: Token): Token {

@@ -17,6 +17,7 @@ export interface TokenNode {
 }
 
 export interface TokenSourceFile<T = Token> {
+  name: string;
   path: string;
   segments: string[];
   tokens?: T[];
@@ -26,4 +27,12 @@ export interface ClassifiedTokens<T = TokenSourceFile> {
   primitives: T[];
   semanticBase: T[];
   themes: Record<string, T[]>;
+}
+
+export type TreeNode = {
+  [key: string]: TreeNode | Token['value'];
+};
+
+export interface Writter {
+  write(path: string, content: string): Promise<void>;
 }
