@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { classifiedTokensMock, primitivesTokenMock } from './__mocks__/treeBuild.mock.js';
+import { classifiedTokensMock, primitivesTokenMock } from './__mocks__/unaliasedToken.mock.js';
 import { TreeBuilder } from '../treeBuilder.js';
 
 const treeBuilder = new TreeBuilder();
