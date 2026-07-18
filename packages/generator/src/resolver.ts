@@ -34,9 +34,9 @@ export class AliasResolver {
 
     value = parseAlias(value);
 
-    const cached = this.cache.get(value);
-
-    if (cached) return cached;
+    if (this.cache.has(value)) {
+      return this.cache.get(value)!;
+    }
 
     if (this.resolving.has(value)) this.throwCycleError(value);
 
