@@ -126,7 +126,7 @@ export const Theme = {
       xxxl: '1.875rem',
     },
   },
-  theme: {
+  themes: {
     dark: {
       color: {
         focus: {

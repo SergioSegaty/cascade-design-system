@@ -1,4 +1,4 @@
 export { Box as default } from './Box';
-import { Theme } from '@bds/types/theme';
+import { RootTheme } from '@bds/types/theme';
 
-Theme.font.size['2xl'];
+RootTheme.font.size['2xl'];

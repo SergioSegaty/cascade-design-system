@@ -12,36 +12,6 @@ import {
 import { TreeBuilder } from './treeBuilder.js';
 import { FileWritter } from './writter.js';
 
-// const themes = ['light', 'dark'];
-
-// for (const theme of themes) {
-//   const sd = new StyleDictionary({
-//     source: [
-//       'packages/tokens/primitives/**/*.json',
-//       `packages/tokens/semantic/Themes/${theme}/**/*.json`,
-//       `packages/tokens/semantic/*.json`,
-//     ],
-
-//     platforms: {
-//       css: {
-//         transformGroup: 'css',
-//         buildPath: 'packages/styles/',
-//         files: [
-//           {
-//             destination: `${theme}.css`,
-//             format: 'css/variables',
-//             options: {
-//               selector: `[data-theme="${theme}"]`,
-//               outputReferences: true,
-//             },
-//           },
-//         ],
-//       },
-//     },
-//   });
-//   await sd.buildAllPlatforms();
-// }
-
 const fileWriter = new FileWritter();
 
 function buildTypes(resolvedClassified: ClassifiedTokens) {
@@ -60,7 +30,7 @@ function buildCss(classifiedTokens: ClassifiedTokens) {
 
 async function build(
   options = {
-    outputReferences: true,
+    outputReferences: false,
   },
 ) {
   const allFiles = await getFiles('packages/tokens');
@@ -73,4 +43,4 @@ async function build(
   console.log();
 }
 
-build();
+build({ outputReferences: true });

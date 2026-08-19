@@ -1,8 +1,8 @@
-/**
- * Do not edit directly, this file was auto-generated.
- */
+/** 
+ * Do not edit directly, this file was auto-generated. 
+ */ 
 
-export const Theme = {
+ export const Theme = {
   color: {
     blue: {
       50: "#eff6ff",
@@ -126,7 +126,7 @@ export const Theme = {
       xxxl: "1.875rem",
       },
     },
-  theme: {
+  themes: {
     dark: {
       color: {
         focus: {
