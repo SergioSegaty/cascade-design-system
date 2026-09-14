@@ -1,13 +1,19 @@
 {
-  "name": "@bds/generator",
+  "name": "@cascade-ds/generator",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsx src/build.ts"
+    "build": "tz build"
   },
   "devDependencies": {
+    "@terrazzo/cli": "^2.7.1",
+    "@terrazzo/plugin-css": "^2.7.1",
+    "@terrazzo/plugin-css-in-js": "^2.7.1",
     "@types/node": "^26.1.0",
-    "tsx": "^4.23.0",
     "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@cascade-ds/styles": "workspace:*"
   }
 }
