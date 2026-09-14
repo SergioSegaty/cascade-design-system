@@ -1,2 +1,5 @@
 node_modules/
-packages/types/*
+packages/styles/*
+packages/storybook/storybook-static/
+*.tsbuildinfo
+coverage/
