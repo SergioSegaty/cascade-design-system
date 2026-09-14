@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowArbitraryExtensions": true,
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "types": ["react", "react-dom", "vite/client"],
+    "paths": {
+      "@/*": ["../components/src/*"]
+    }
+  },
+  "include": [".storybook/**/*.ts", "../components/src/**/*.stories.tsx"],
+  "exclude": ["node_modules"]
+}

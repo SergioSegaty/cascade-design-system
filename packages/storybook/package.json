@@ -1,0 +1,29 @@
+{
+  "name": "@cascade-ds/storybook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6010",
+    "build": "storybook build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@cascade-ds/components": "workspace:*",
+    "@cascade-ds/styles": "workspace:*",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@wyw-in-js/vite": "^2.5.1",
+    "storybook": "^10.6.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.1.4"
+  }
+}
