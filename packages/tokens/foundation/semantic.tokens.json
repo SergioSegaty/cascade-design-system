@@ -1,0 +1,239 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "semantic": {
+    "font": {
+      "family": {
+        "body": {
+          "$value": "{primitive.font.family.inter}",
+          "$type": "fontFamily",
+          "$description": "Default UI text — paragraphs, labels, buttons."
+        },
+        "heading": {
+          "$value": "{primitive.font.family.inter}",
+          "$type": "fontFamily",
+          "$description": "Headings and titles. Same family as body for this system, kept separate so it can diverge later without touching body."
+        },
+        "code": {
+          "$value": "{primitive.font.family.jetbrains-mono}",
+          "$type": "fontFamily",
+          "$description": "Inline code, code blocks, and tabular/monospace data."
+        }
+      },
+      "size": {
+        "xs": {
+          "$value": "{primitive.font.size.50}",
+          "$type": "dimension",
+          "$description": "Captions, helper text, fine print."
+        },
+        "sm": {
+          "$value": "{primitive.font.size.100}",
+          "$type": "dimension",
+          "$description": "Secondary body text, small buttons."
+        },
+        "md": {
+          "$value": "{primitive.font.size.200}",
+          "$type": "dimension",
+          "$description": "Default body text. Base size for most UI."
+        },
+        "lg": {
+          "$value": "{primitive.font.size.300}",
+          "$type": "dimension",
+          "$description": "Emphasized body text, large buttons."
+        },
+        "xl": {
+          "$value": "{primitive.font.size.400}",
+          "$type": "dimension",
+          "$description": "Small headings (h4/h5)."
+        },
+        "2xl": {
+          "$value": "{primitive.font.size.500}",
+          "$type": "dimension",
+          "$description": "Section headings (h3)."
+        },
+        "3xl": {
+          "$value": "{primitive.font.size.600}",
+          "$type": "dimension",
+          "$description": "Page headings (h2)."
+        },
+        "4xl": {
+          "$value": "{primitive.font.size.700}",
+          "$type": "dimension",
+          "$description": "Hero/display headings (h1)."
+        }
+      }
+    },
+    "spacing": {
+      "$type": "dimension",
+      "$description": "Semantic spacing scale, aliased from primitive.size. Base unit for padding/gap/stack.",
+      "none": {
+        "$value": "{primitive.size.0}"
+      },
+      "xs": {
+        "$value": "{primitive.size.1}"
+      },
+      "sm": {
+        "$value": "{primitive.size.2}"
+      },
+      "md": {
+        "$value": "{primitive.size.4}"
+      },
+      "lg": {
+        "$value": "{primitive.size.6}"
+      },
+      "xl": {
+        "$value": "{primitive.size.8}"
+      },
+      "2xl": {
+        "$value": "{primitive.size.12}"
+      },
+      "3xl": {
+        "$value": "{primitive.size.16}"
+      }
+    },
+    "padding": {
+      "$type": "dimension",
+      "$description": "Padding scale for components/containers, aliased from semantic.spacing.",
+      "xs": {
+        "$value": "{semantic.spacing.xs}"
+      },
+      "sm": {
+        "$value": "{semantic.spacing.sm}"
+      },
+      "md": {
+        "$value": "{semantic.spacing.md}"
+      },
+      "lg": {
+        "$value": "{semantic.spacing.lg}"
+      },
+      "xl": {
+        "$value": "{semantic.spacing.xl}"
+      }
+    },
+    "round": {
+      "$type": "dimension",
+      "$description": "Border-radius scale.",
+      "none": {
+        "$value": "{primitive.size.0}"
+      },
+      "sm": {
+        "$value": "{primitive.size.1}"
+      },
+      "md": {
+        "$value": "{primitive.size.2}"
+      },
+      "lg": {
+        "$value": "{primitive.size.3}"
+      },
+      "xl": {
+        "$value": "{primitive.size.4}"
+      },
+      "full": {
+        "$value": {
+          "value": 9999,
+          "unit": "px"
+        }
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$description": "Gap scale for flex/grid layouts, aliased from semantic.spacing.",
+      "xs": {
+        "$value": "{semantic.spacing.xs}"
+      },
+      "sm": {
+        "$value": "{semantic.spacing.sm}"
+      },
+      "md": {
+        "$value": "{semantic.spacing.md}"
+      },
+      "lg": {
+        "$value": "{semantic.spacing.lg}"
+      },
+      "xl": {
+        "$value": "{semantic.spacing.xl}"
+      }
+    },
+    "layout": {
+      "$description": "Page/container layout tokens: breakpoints, max-widths, grid.",
+      "breakpoint": {
+        "$type": "dimension",
+        "sm": {
+          "$value": {
+            "value": 640,
+            "unit": "px"
+          }
+        },
+        "md": {
+          "$value": {
+            "value": 768,
+            "unit": "px"
+          }
+        },
+        "lg": {
+          "$value": {
+            "value": 1024,
+            "unit": "px"
+          }
+        },
+        "xl": {
+          "$value": {
+            "value": 1280,
+            "unit": "px"
+          }
+        },
+        "2xl": {
+          "$value": {
+            "value": 1536,
+            "unit": "px"
+          }
+        }
+      },
+      "container": {
+        "$type": "dimension",
+        "sm": {
+          "$value": "{semantic.layout.breakpoint.sm}"
+        },
+        "md": {
+          "$value": "{semantic.layout.breakpoint.md}"
+        },
+        "lg": {
+          "$value": "{semantic.layout.breakpoint.lg}"
+        },
+        "xl": {
+          "$value": "{semantic.layout.breakpoint.xl}"
+        }
+      },
+      "gutter": {
+        "$value": "{semantic.spacing.md}",
+        "$type": "dimension"
+      },
+      "columns": {
+        "$value": 12,
+        "$type": "number"
+      }
+    },
+    "stack": {
+      "$type": "dimension",
+      "$description": "Vertical rhythm scale for stacked/flow layouts (e.g. a <Stack> component), aliased from semantic.spacing.",
+      "xs": {
+        "$value": "{semantic.spacing.xs}"
+      },
+      "sm": {
+        "$value": "{semantic.spacing.sm}"
+      },
+      "md": {
+        "$value": "{semantic.spacing.md}"
+      },
+      "lg": {
+        "$value": "{semantic.spacing.lg}"
+      },
+      "xl": {
+        "$value": "{semantic.spacing.xl}"
+      },
+      "2xl": {
+        "$value": "{semantic.spacing.2xl}"
+      }
+    },
+    "$description": "Non-color semantic tokens. Theme-independent."
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "component": {
+    "$description": "Layer 3 - Component: tokens scoped to a specific UI component, composed exclusively from semantic tokens.",
+    "button": {
+      "$description": "Layer 3 - Component: Button. Consumes only semantic (and, for disabled states, primitive) tokens - never raw values.",
+      "size": {
+        "$description": "Padding and min-height per button size.",
+        "sm": {
+          "padding-inline": {
+            "$value": "{semantic.padding.sm}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.xs}",
+            "$type": "dimension"
+          },
+          "min-height": {
+            "$value": "{primitive.size.8}",
+            "$type": "dimension"
+          }
+        },
+        "md": {
+          "padding-inline": {
+            "$value": "{semantic.padding.md}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.sm}",
+            "$type": "dimension"
+          },
+          "min-height": {
+            "$value": "{primitive.size.10}",
+            "$type": "dimension"
+          }
+        },
+        "lg": {
+          "padding-inline": {
+            "$value": "{semantic.padding.lg}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.md}",
+            "$type": "dimension"
+          },
+          "min-height": {
+            "$value": "{primitive.size.12}",
+            "$type": "dimension"
+          }
+        }
+      },
+      "color": {
+        "$description": "Color tokens per button variant and interaction state, composed from semantic.color.",
+        "primary": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.brand.primary}"
+            },
+            "hover": {
+              "$value": "{semantic.color.brand.primary-hover}"
+            },
+            "active": {
+              "$value": "{semantic.color.brand.primary-active}"
+            },
+            "disabled": {
+              "$value": "{primitive.color.gray.200}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.on-brand}"
+            },
+            "disabled": {
+              "$value": "{primitive.color.gray.400}"
+            }
+          }
+        },
+        "secondary": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.background.subtle}"
+            },
+            "hover": {
+              "$value": "{primitive.color.gray.200}"
+            },
+            "active": {
+              "$value": "{primitive.color.gray.300}"
+            },
+            "disabled": {
+              "$value": "{primitive.color.gray.100}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.primary}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.text.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$value": "{semantic.color.border.default}"
+            }
+          }
+        },
+        "danger": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.feedback.danger}"
+            },
+            "hover": {
+              "$value": "{semantic.color.feedback.danger-hover}"
+            },
+            "active": {
+              "$value": "{semantic.color.feedback.danger-active}"
+            },
+            "disabled": {
+              "$value": "{primitive.color.gray.200}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.on-brand}"
+            },
+            "disabled": {
+              "$value": "{primitive.color.gray.400}"
+            }
+          }
+        },
+        "ghost": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0,
+                  0,
+                  0
+                ],
+                "alpha": 0
+              }
+            },
+            "hover": {
+              "$value": "{primitive.color.gray.100}"
+            },
+            "active": {
+              "$value": "{primitive.color.gray.200}"
+            },
+            "disabled": {
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0,
+                  0,
+                  0
+                ],
+                "alpha": 0
+              }
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.primary}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.text.disabled}"
+            }
+          }
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.gap.xs}",
+        "$type": "dimension"
+      },
+      "border": {
+        "$type": "dimension",
+        "width": {
+          "$value": {
+            "value": 1,
+            "unit": "px"
+          }
+        }
+      }
+    }
+  }
+}

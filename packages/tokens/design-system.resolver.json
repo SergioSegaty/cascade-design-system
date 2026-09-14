@@ -1,0 +1,48 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/resolver.json",
+  "name": "My Design System",
+  "description": "Primitive/semantic/component token layers, forked by light/dark theme.",
+  "version": "2025.10",
+  "sets": {
+    "foundation": {
+      "description": "Unconditional tokens: primitives, non-color semantics, and components.",
+      "sources": [
+        {
+          "$ref": "foundation/primitive.tokens.json"
+        },
+        {
+          "$ref": "foundation/semantic.tokens.json"
+        },
+        {
+          "$ref": "foundation/component.tokens.json"
+        }
+      ]
+    }
+  },
+  "modifiers": {
+    "theme": {
+      "description": "Color scheme",
+      "contexts": {
+        "light": [
+          {
+            "$ref": "themes/color-light.tokens.json"
+          }
+        ],
+        "dark": [
+          {
+            "$ref": "themes/color-dark.tokens.json"
+          }
+        ]
+      },
+      "default": "light"
+    }
+  },
+  "resolutionOrder": [
+    {
+      "$ref": "#/sets/foundation"
+    },
+    {
+      "$ref": "#/modifiers/theme"
+    }
+  ]
+}

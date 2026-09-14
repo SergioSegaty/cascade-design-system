@@ -1,0 +1,113 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "semantic": {
+    "color": {
+      "$description": "Purpose-driven color roles, aliased from primitive.color.",
+      "background": {
+        "$type": "color",
+        "default": {
+          "$value": "{primitive.color.gray.50}"
+        },
+        "subtle": {
+          "$value": "{primitive.color.gray.100}"
+        },
+        "muted": {
+          "$value": "{primitive.color.gray.200}"
+        },
+        "inverse": {
+          "$value": "{primitive.color.gray.900}"
+        },
+        "brand": {
+          "$value": "{primitive.color.blue.50}"
+        }
+      },
+      "text": {
+        "$type": "color",
+        "primary": {
+          "$value": "{primitive.color.gray.900}"
+        },
+        "secondary": {
+          "$value": "{primitive.color.gray.600}"
+        },
+        "disabled": {
+          "$value": "{primitive.color.gray.400}"
+        },
+        "inverse": {
+          "$value": "{primitive.color.gray.50}"
+        },
+        "link": {
+          "$value": "{primitive.color.blue.600}"
+        },
+        "on-brand": {
+          "$value": "{primitive.color.gray.50}"
+        }
+      },
+      "border": {
+        "$type": "color",
+        "default": {
+          "$value": "{primitive.color.gray.200}"
+        },
+        "subtle": {
+          "$value": "{primitive.color.gray.100}"
+        },
+        "strong": {
+          "$value": "{primitive.color.gray.400}"
+        },
+        "focus": {
+          "$value": "{primitive.color.blue.500}"
+        }
+      },
+      "brand": {
+        "$type": "color",
+        "primary": {
+          "$value": "{primitive.color.blue.500}"
+        },
+        "primary-hover": {
+          "$value": "{primitive.color.blue.600}"
+        },
+        "primary-active": {
+          "$value": "{primitive.color.blue.700}"
+        },
+        "secondary": {
+          "$value": "{primitive.color.purple.500}"
+        },
+        "secondary-hover": {
+          "$value": "{primitive.color.purple.600}"
+        }
+      },
+      "feedback": {
+        "$type": "color",
+        "success": {
+          "$value": "{primitive.color.green.600}"
+        },
+        "success-subtle": {
+          "$value": "{primitive.color.green.50}"
+        },
+        "warning": {
+          "$value": "{primitive.color.yellow.600}"
+        },
+        "warning-subtle": {
+          "$value": "{primitive.color.yellow.50}"
+        },
+        "danger": {
+          "$value": "{primitive.color.red.600}"
+        },
+        "danger-hover": {
+          "$value": "{primitive.color.red.700}"
+        },
+        "danger-active": {
+          "$value": "{primitive.color.red.800}"
+        },
+        "danger-subtle": {
+          "$value": "{primitive.color.red.50}"
+        },
+        "info": {
+          "$value": "{primitive.color.cyan.600}"
+        },
+        "info-subtle": {
+          "$value": "{primitive.color.cyan.50}"
+        }
+      }
+    }
+  }
+}
