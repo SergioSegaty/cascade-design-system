@@ -1,8 +1,8 @@
 # Cascade DS
 
 A token-driven React design system: design tokens in, themed CSS + typed
-components out. Built as a pnpm/Lerna monorepo with four packages that form
-one pipeline:
+components out. Built as a pnpm workspaces monorepo with four packages that
+form one pipeline:
 
 ```
 tokens  →  generator  →  styles  →  components  →  storybook
@@ -32,11 +32,11 @@ choices; the [package READMEs](./packages) go deeper on each stage.
 | Concern            | Choice                                              |
 | ------------------ | ---------------------------------------------------- |
 | Language           | TypeScript (strict), React 19                        |
-| Monorepo tooling   | pnpm workspaces + Lerna (versioning/publishing only)  |
+| Monorepo tooling   | pnpm workspaces + [Changesets](https://github.com/changesets/changesets) (versioning/publishing) |
 | Token format       | DTCG JSON, composed via a DTCG resolver               |
 | Token generator    | Terrazzo (`@terrazzo/cli`, `plugin-css`, `plugin-css-in-js`) — see [ADR-001](./adr/ADR-001-generator.md) |
 | Component styling  | Linaria (zero-runtime CSS-in-JS) + `class-variance-authority` for variants — see [ADR-002](./adr/ADR-002-styling-library.md) |
-| Component bundling | tsup (`packages/components`), Rollup + `@wyw-in-js` for Linaria extraction |
+| Component bundling | Rollup (`packages/components`) + `@wyw-in-js` for Linaria extraction |
 | Testing            | Vitest + React Testing Library (jsdom), Istanbul coverage |
 | Linting/formatting | ESLint (typescript-eslint, jsx-a11y, react-hooks) + Prettier |
 | Docs/preview       | Storybook 10 (`@storybook/react-vite`)                |
@@ -87,6 +87,9 @@ pnpm test
 
 # run Storybook
 pnpm storybook
+
+# record a version bump for your change (interactive)
+pnpm changeset
 ```
 
 ## Repo layout
@@ -108,6 +111,8 @@ runs the full pipeline below, in order. Each stage depends on the previous
 one's output — the pipeline is designed to only ever publish a components
 package that was built against tokens that were actually just generated.
 
+That's why it's called Cascade DS.
+
 1. **Generate theme with Terrazzo**
    Run `pnpm --filter @cascade-ds/generator run build` (`pnpm style-build`
    at the root) so `packages/styles/{index.css,theme.js,theme.d.ts}` reflect
@@ -115,7 +120,7 @@ package that was built against tokens that were actually just generated.
    (invalid color/dimension/typography/etc., per `terrazzo.config.ts`).
 
 2. **Build the DS package (components + styles)**
-   Build `@cascade-ds/components` (tsup) against the freshly generated
+   Build `@cascade-ds/components` (Rollup) against the freshly generated
    `@cascade-ds/styles`, so the published bundle always embeds the token
    output from step 1 rather than a stale local build.
 

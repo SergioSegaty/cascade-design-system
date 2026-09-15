@@ -17,13 +17,10 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       // Mirrors the "@/*" path alias declared in packages/components/tsconfig.json
-      // so component source can be loaded directly without a build step.
       '@': join(currentDir, '../../components/src'),
     };
     config.plugins ??= [];
     config.plugins.push(
-      // Compiles linaria's `css` tag at build time instead of leaving it as a
-      // runtime call, which Vite's dev server otherwise can't handle.
       wyw({
         include: ['**/*.{ts,tsx}'],
         sourceMap: process.env.NODE_ENV !== 'production',

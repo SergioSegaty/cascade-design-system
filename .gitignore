@@ -1,5 +1,7 @@
 node_modules/
 packages/styles/*
+packages/components/dist/
 packages/storybook/storybook-static/
 *.tsbuildinfo
 coverage/
+.claude
