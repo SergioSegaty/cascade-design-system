@@ -24,8 +24,9 @@ tokens  →  generator  →  styles  →  components  →  storybook
 - **[`packages/storybook`](./packages/storybook)** — Storybook instance for
   developing and reviewing components in isolation.
 
-See the [ADRs](./adr) for the reasoning behind the generator and styling
-choices; the [package READMEs](./packages) go deeper on each stage.
+See the [ADRs](./adr) for the reasoning behind the generator, styling,
+accessibility-testing, and monorepo-tooling choices; the
+[package READMEs](./packages) go deeper on each stage.
 
 ## Stack
 
@@ -37,7 +38,8 @@ choices; the [package READMEs](./packages) go deeper on each stage.
 | Token generator    | Terrazzo (`@terrazzo/cli`, `plugin-css`, `plugin-css-in-js`) — see [ADR-001](./adr/ADR-001-generator.md) |
 | Component styling  | Linaria (zero-runtime CSS-in-JS) + `class-variance-authority` for variants — see [ADR-002](./adr/ADR-002-styling-library.md) |
 | Component bundling | Rollup (`packages/components`) + `@wyw-in-js` for Linaria extraction |
-| Testing            | Vitest + React Testing Library (jsdom), Istanbul coverage |
+| Testing            | Vitest + React Testing Library (jsdom) for component unit tests, Istanbul coverage |
+| Accessibility testing | Storybook `addon-a11y` via `addon-vitest` (Playwright/Chromium) — see [ADR-003](./adr/ADR-003-a11y-testing.md) |
 | Linting/formatting | ESLint (typescript-eslint, jsx-a11y, react-hooks) + Prettier |
 | Docs/preview       | Storybook 10 (`@storybook/react-vite`)                |
 
@@ -55,6 +57,27 @@ every render. Tailwind pushes styling into markup instead of co-located,
 token-driven component styles. Linaria compiles to static CSS at build
 time — Styled-Components' authoring ergonomics, zero runtime cost to
 consumers. Full reasoning: [ADR-002](./adr/ADR-002-styling-library.md).
+
+### Why Storybook addons over vitest-axe for accessibility
+
+Accessibility checks started as `vitest-axe` assertions inside component
+unit tests. That splits "does this rendered component behave/look correct"
+across two tools once visual regression testing (also planned for
+Storybook, via Playwright) comes online. `@storybook/addon-a11y`, run
+through `@storybook/addon-vitest`, checks contrast and visibility alongside
+a11y rules against every documented story, and keeps that whole class of
+checks owned by one component — Storybook — rather than splitting it
+between component tests and Storybook. Full reasoning:
+[ADR-003](./adr/ADR-003-a11y-testing.md).
+
+### Why Changesets over Lerna
+
+pnpm workspaces already resolve cross-package dependencies
+(`workspace:*`), so Lerna's workspace/graph management duplicated what pnpm
+does. Changesets handles versioning and publishing from one place, driven
+by changeset files authored per-PR, so pnpm owns workspace linking and
+Changesets owns versioning + publishing — one tool per responsibility. Full
+reasoning: [ADR-004](./adr/ADR-004-lerna-to-changesets.md).
 
 ### Token model: primitive → semantic → component
 
@@ -84,6 +107,9 @@ pnpm style-build
 
 # run the component library's tests
 pnpm test
+
+# run Storybook's tests (accessibility checks via addon-a11y)
+pnpm test:storybook
 
 # run Storybook
 pnpm storybook
