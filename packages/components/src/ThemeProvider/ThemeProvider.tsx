@@ -1,20 +1,39 @@
-import { ThemeContext, type ThemeModeKeys } from '@/context/Theme/themeContext';
-import { useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { ThemeContext, type ThemeMode } from '../context/Theme/themeContext';
+
+const DARK_MEDIA_QUERY = '(prefers-color-scheme: dark)';
 
 type ThemeProviderProps = {
   children: ReactNode;
-  defaultTheme: ThemeModeKeys;
+  initialMode?: ThemeMode;
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  children,
-  defaultTheme = 'light',
-}) => {
-  const [theme, setTheme] = useState(defaultTheme);
+function supportsMatchMedia(): boolean {
+  return typeof window !== 'undefined' && typeof window.matchMedia === 'function';
+}
+
+export function ThemeProvider({ children, initialMode = 'light' }: ThemeProviderProps) {
+  const [theme, setTheme] = useState<ThemeMode>(initialMode);
+
+  useEffect(() => {
+    if (supportsMatchMedia()) {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia(DARK_MEDIA_QUERY);
+    const handleChange = (event: MediaQueryListEvent) => {
+      setTheme(event.matches ? 'dark' : 'light');
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [theme]);
+
+  const contextValue = useMemo(() => ({ theme, setTheme }), [theme]);
 
   return (
-    <ThemeContext.Provider value={{ currentTheme: theme, setTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       <div data-theme={theme}>{children}</div>
     </ThemeContext.Provider>
   );
-};
+}
