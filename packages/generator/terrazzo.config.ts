@@ -1,8 +1,9 @@
 import { defineConfig } from '@terrazzo/cli';
+import type { Config } from '@terrazzo/parser';
 import css from '@terrazzo/plugin-css';
 import cssInJs from '@terrazzo/plugin-css-in-js';
 
-export default defineConfig({
+const customConfig: Config = {
   tokens: ['../tokens/design-system.resolver.json'],
   plugins: [
     css({
@@ -47,4 +48,6 @@ export default defineConfig({
       'core/consistent-naming': 'warn',
     },
   },
-});
+};
+
+export default defineConfig(customConfig);
