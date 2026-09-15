@@ -24,7 +24,6 @@
     "build": "rollup -c",
     "dev": "rollup -c --watch",
     "lint": "eslint .",
-    "pretypecheck": "pnpm --filter @cascade-ds/types build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },

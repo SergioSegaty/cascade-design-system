@@ -1,5 +1,9 @@
 packages:
-  - "packages/*"
+  - 'packages/*'
 allowBuilds:
   esbuild: false
   nx: false
+overrides:
+  vite: '8.3.0'
+  vitest: '4.1.11'
+  '@vitest/browser-playwright': '4.1.11'

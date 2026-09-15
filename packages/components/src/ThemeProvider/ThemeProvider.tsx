@@ -16,7 +16,7 @@ export function ThemeProvider({ children, initialMode = 'light' }: ThemeProvider
   const [theme, setTheme] = useState<ThemeMode>(initialMode);
 
   useEffect(() => {
-    if (supportsMatchMedia()) {
+    if (!supportsMatchMedia()) {
       return;
     }
 
@@ -27,7 +27,7 @@ export function ThemeProvider({ children, initialMode = 'light' }: ThemeProvider
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
+  }, []);
 
   const contextValue = useMemo(() => ({ theme, setTheme }), [theme]);
 

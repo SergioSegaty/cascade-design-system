@@ -6,6 +6,6 @@ export { Button } from './Button';
 export { Stack } from './Stack';
 
 export { ThemeProvider } from './ThemeProvider';
-export type { ThemeMode, ResolvedTheme, ThemeContextValue } from './ThemeProvider';
+export type { ThemeMode, ThemeContextValue } from './ThemeProvider';
 
 export { useTheme } from './hooks';

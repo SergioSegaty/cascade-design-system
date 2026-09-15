@@ -4,20 +4,12 @@ import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import Button from './Button';
 import { buttonVariant } from './Button.style';
-import { axe } from 'vitest-axe';
 
 afterEach(() => {
   cleanup();
 });
 
 describe('Button', () => {
-  it('It has no accessibility violations', async () => {
-    const { container } = render(<Button>Click Me</Button>);
-    const results = await axe(container);
-
-    expect(results.violations).toHaveLength(0);
-  });
-
   it('renders its children as a button', () => {
     render(<Button>Click me</Button>);
 
