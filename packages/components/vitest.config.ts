@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 import wyw from '@wyw-in-js/vite';
+import 'vitest-axe/extend-expect';
 
 export default defineConfig({
   resolve: {
