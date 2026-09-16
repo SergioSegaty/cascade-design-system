@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Box } from './Box';
 
 const meta = {
-  title: 'Components/Box',
+  title: 'CascadeDS/Components/Atom/Box',
   component: Box,
   tags: ['autodocs'],
 } satisfies Meta<typeof Box>;
