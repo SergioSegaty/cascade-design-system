@@ -8,12 +8,18 @@
   "files": [
     "index.css",
     "theme.js",
-    "theme.d.ts"
+    "theme.d.ts",
+    "theme-names.js",
+    "theme-names.d.ts"
   ],
   "exports": {
     ".": {
       "types": "./theme.d.ts",
       "import": "./theme.js"
+    },
+    "./theme-names": {
+      "types": "./theme-names.d.ts",
+      "import": "./theme-names.js"
     },
     "./index.css": "./index.css"
   }

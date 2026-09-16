@@ -1,6 +1,7 @@
 import { createContext } from 'react';
+import type { Theme } from '@cascade-ds/styles/theme-names';
 
-export type ThemeMode = 'light' | 'dark';
+export type ThemeMode = Theme;
 
 export type ThemeContextValue = {
   theme: ThemeMode;
