@@ -1,4 +1,4 @@
-![Cascade Design System HeaderImage](CascadeCS-Header.jpg)
+![Cascade Design System HeaderImage](images/CascadeCS-Header.jpg)
 # Cascade DS
 
 A token-driven React design system: design tokens in, themed CSS + typed
@@ -97,6 +97,32 @@ that only reference semantic tokens update automatically. See
 [`packages/tokens`](./packages/tokens/README.md) and
 [`packages/styles`](./packages/styles/README.md) for the full model,
 including how light/dark theme resolution works.
+
+### Why a typed theme object
+
+`packages/generator`'s `plugin-css-in-js` output types every token path in
+`packages/styles/theme.d.ts`, so components import `component` /
+`primitive` / `semantic` objects instead of writing raw
+`var(--component-button-...)` strings. That typing turns mistakes that
+would otherwise only surface in the browser into compile errors:
+
+- **A token update that renames or removes a token** breaks every
+  consumer at compile time. A raw CSS variable string still "works" at
+  build time and only fails silently at runtime, once the variable no
+  longer resolves to anything.
+- **A typo from a developer** is caught immediately — e.g.
+  `component.button.color.secondar.background.default` red-underlines in
+  the editor and fails `tsc`, instead of shipping a button with a missing
+  background color that only gets noticed in a visual review:
+
+  ![Typed theme object catching a typo at compile time](./images/typed-theme.png)
+
+- **Discoverability** — autocomplete on `component.button.color.*`
+  surfaces every token path that actually exists, so consumers don't need
+  to cross-reference the token JSON or generated CSS.
+- **Safe renames** — renaming a token in the source JSON and rebuilding
+  makes TypeScript flag every call site still using the old path, instead
+  of relying on a repo-wide text search that can miss aliases.
 
 ## Getting started
 
