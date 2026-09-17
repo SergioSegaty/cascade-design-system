@@ -2,16 +2,14 @@ import { Project, SyntaxKind } from 'ts-morph';
 import { describe, it, expect } from 'vitest';
 import path from 'node:path';
 
-const target = 'primitive';
-
-const sourceFilesPath = ['packages/components/src/Atoms/**/*.style.ts'];
-
+const styleFilesPaths = ['packages/components/src/Atoms/**/*.style.ts'];
 const stylePackage = '@cascade-ds/styles';
+const forbiddenImport = 'primitive';
 
 describe('fitness: component styles must not import `primary` from packages/styles', () => {
   it('has no *.style.ts file importing `primary` from packages/styles', () => {
     const project = new Project();
-    const sourceFiles = project.addSourceFilesAtPaths(sourceFilesPath);
+    const sourceFiles = project.addSourceFilesAtPaths(styleFilesPaths);
 
     const violations: string[] = [];
 
@@ -28,7 +26,9 @@ describe('fitness: component styles must not import `primary` from packages/styl
         if (!resolvesToPackageStyles) continue;
 
         const namedImports = importDecl.getNamedImports();
-        const importsPrimitive = namedImports.some((named) => named.getName() === target);
+        const importsPrimitive = namedImports.some(
+          (named) => named.getName() === forbiddenImport,
+        );
 
         const namespaceImport = importDecl.getNamespaceImport();
         let importsPrimaryViaNamespace = false;
@@ -38,14 +38,15 @@ describe('fitness: component styles must not import `primary` from packages/styl
           const usages = file
             .getDescendantsOfKind(SyntaxKind.PropertyAccessExpression)
             .filter(
-              (node) => node.getExpression().getText() === alias && node.getName() === target,
+              (node) =>
+                node.getExpression().getText() === alias && node.getName() === forbiddenImport,
             );
           importsPrimaryViaNamespace = usages.length > 0;
         }
 
         if (importsPrimitive || importsPrimaryViaNamespace) {
           violations.push(
-            `${path.relative(process.cwd(), file.getFilePath())} imports ${target} from "${moduleSpecifier}"`,
+            `${path.relative(process.cwd(), file.getFilePath())} imports ${forbiddenImport} from "${moduleSpecifier}"`,
           );
         }
       }
