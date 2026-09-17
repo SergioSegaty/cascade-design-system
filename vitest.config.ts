@@ -6,7 +6,16 @@ export default defineConfig({
     // Each package with its own vitest.config.ts (environment, plugins) is
     // run as its own project; packages without one aren't included here and
     // fall back to being matched directly by this root config instead.
-    projects: ['packages/*/vitest.config.ts'],
+    projects: [
+      'packages/*/vitest.config.ts',
+      {
+        extends: true,
+        test: {
+          name: 'fitness',
+          include: ['fitness/**/*.{test,spec}.{ts,tsx}'],
+        },
+      },
+    ],
     coverage: {
       provider: 'istanbul',
       reporter: ['text', 'json', 'html'],

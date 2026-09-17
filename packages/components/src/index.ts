@@ -1,7 +1,7 @@
-export { default as Box } from './Box';
-export type { BoxProps, BoxOwnProps } from './Box/Box';
+export { default as Box } from './Atoms/Box';
+export type { BoxProps, BoxOwnProps } from './Atoms/Box/Box';
 
-export { Button } from './Button';
+export { Button } from './Atoms/Button';
 
 export { Stack } from './Stack';
 

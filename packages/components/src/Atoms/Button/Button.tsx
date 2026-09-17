@@ -1,4 +1,4 @@
-import Box from '@/Box';
+import Box from '@/Atoms/Box';
 import { buttonVariant } from './Button.style';
 import type { VariantProps } from 'class-variance-authority';
 import { cx } from 'linaria';
