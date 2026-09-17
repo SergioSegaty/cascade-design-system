@@ -29,6 +29,13 @@ See the [ADRs](./adr) for the reasoning behind the generator, styling,
 accessibility-testing, and monorepo-tooling choices; the
 [package READMEs](./packages) go deeper on each stage.
 
+Contributing a component? Start with
+[HOW-TO-CONTRIBUTE.md](./HOW-TO-CONTRIBUTE.md) — it covers the required
+file layout, styling/testing/story conventions, and the checks to run
+before opening a PR. Architectural rules (e.g. which tokens a layer may
+import) are enforced automatically as [fitness functions](./fitness) —
+see [ADR-005](./adr/ADR-005-fitness-functions.md).
+
 ## Stack
 
 | Concern            | Choice                                              |
@@ -135,6 +142,9 @@ pnpm style-build
 # run the component library's tests
 pnpm test
 
+# run architectural fitness functions (see ADR-005)
+pnpm test:fitness
+
 # run Storybook's tests (accessibility checks via addon-a11y)
 pnpm test:storybook
 
@@ -155,6 +165,7 @@ packages/
 ├── components/   # React component library
 └── storybook/    # Storybook app consuming components + styles
 adr/              # architecture decision records
+fitness/          # automated architectural rules (fitness functions), see ADR-005
 ```
 
 ## CI/CD pipeline
