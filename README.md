@@ -29,6 +29,13 @@ See the [ADRs](./adr) for the reasoning behind the generator, styling,
 accessibility-testing, and monorepo-tooling choices; the
 [package READMEs](./packages) go deeper on each stage.
 
+Contributing a component? Start with
+[HOW-TO-CONTRIBUTE.md](./HOW-TO-CONTRIBUTE.md) — it covers the required
+file layout, styling/testing/story conventions, and the checks to run
+before opening a PR. Architectural rules (e.g. which tokens a layer may
+import) are enforced automatically as [fitness functions](./fitness) —
+see [ADR-005](./adr/ADR-005-fitness-functions.md).
+
 ## Stack
 
 | Concern            | Choice                                              |
@@ -129,11 +136,20 @@ would otherwise only surface in the browser into compile errors:
 ```sh
 pnpm install
 
-# regenerate styles/theme.js from token source
-pnpm style-build
+# regenerate styles/index.css, theme.js and theme.d.ts from token source
+pnpm build:style
+
+# build the components package (Rollup) against the generated styles
+pnpm build
 
 # run the component library's tests
 pnpm test
+
+# run the component library's tests with coverage
+pnpm test:coverage
+
+# run architectural fitness functions (see ADR-005)
+pnpm test:fitness
 
 # run Storybook's tests (accessibility checks via addon-a11y)
 pnpm test:storybook
@@ -143,6 +159,12 @@ pnpm storybook
 
 # record a version bump for your change (interactive)
 pnpm changeset
+
+# consume changesets and bump package versions
+pnpm version-packages
+
+# build and publish the DS package (CI only, see below)
+pnpm release
 ```
 
 ## Repo layout
@@ -155,6 +177,7 @@ packages/
 ├── components/   # React component library
 └── storybook/    # Storybook app consuming components + styles
 adr/              # architecture decision records
+fitness/          # automated architectural rules (fitness functions), see ADR-005
 ```
 
 ## CI/CD pipeline
@@ -167,7 +190,7 @@ package that was built against tokens that were actually just generated.
 That's why it's called Cascade DS.
 
 1. **Generate theme with Terrazzo**
-   Run `pnpm --filter @cascade-ds/generator run build` (`pnpm style-build`
+   Run `pnpm --filter @cascade-ds/generator run build` (`pnpm build:style`
    at the root) so `packages/styles/{index.css,theme.js,theme.d.ts}` reflect
    the current token source. Fails the pipeline on any Terrazzo lint error
    (invalid color/dimension/typography/etc., per `terrazzo.config.ts`).
