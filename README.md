@@ -145,9 +145,6 @@ pnpm build
 # run the component library's tests
 pnpm test
 
-# run the component library's tests with coverage
-pnpm test:coverage
-
 # run architectural fitness functions (see ADR-005)
 pnpm test:fitness
 
