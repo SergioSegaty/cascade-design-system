@@ -5,3 +5,4 @@ packages/storybook/storybook-static/
 *.tsbuildinfo
 coverage/
 .claude
+AGENTS.md

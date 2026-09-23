@@ -2,111 +2,470 @@
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "semantic": {
     "color": {
-      "$type": "color",
+      "$description": "Mode: dark. Same roles/keys as color-light. Surfaces step UP in lightness with elevation (canvas 950 -> default 900 -> raised 800). Brand stays light orange / light purple as fills with DARK text; small indicators and text use the 200-400 tints so they stay >= 3:1 / 4.5:1 on dark surfaces.",
       "background": {
         "$type": "color",
+        "canvas": {
+          "$value": "{primitive.color.gray.950}",
+          "$description": "App page background behind cards."
+        },
         "default": {
-          "$value": "{primitive.color.gray.900}"
+          "$value": "{primitive.color.gray.900}",
+          "$description": "Default surface: cards, panels, sidebar, topbar, inputs."
+        },
+        "raised": {
+          "$value": "{primitive.color.gray.800}",
+          "$description": "Popovers, dropdowns, modals - lighter than the surface to read as elevated."
         },
         "subtle": {
-          "$value": "{primitive.color.gray.800}"
+          "$value": "{primitive.color.gray.800}",
+          "$description": "Table headers, hover rows, inset areas."
         },
         "muted": {
-          "$value": "{primitive.color.gray.700}"
+          "$value": "{primitive.color.gray.700}",
+          "$description": "Skeletons, pressed neutral controls."
         },
         "inverse": {
-          "$value": "{primitive.color.gray.50}"
+          "$value": "{primitive.color.gray.100}",
+          "$description": "Tooltips, toasts (light on dark)."
+        },
+        "disabled": {
+          "$value": "{primitive.color.gray.800}"
+        },
+        "transparent": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": 0
+          }
+        },
+        "overlay": {
+          "$value": "{primitive.color.alpha.black.70}",
+          "$description": "Modal/drawer scrim - stronger than light mode to separate from a dark page."
+        },
+        "hover": {
+          "$value": "{primitive.color.alpha.white.4}",
+          "$description": "Neutral hover tint (lightens) over any surface."
+        },
+        "pressed": {
+          "$value": "{primitive.color.alpha.white.8}",
+          "$description": "Neutral pressed tint over any surface."
         },
         "brand": {
-          "$value": "{primitive.color.blue.900}"
+          "$value": "{primitive.color.orange.950}",
+          "$description": "Deep orange-tinted surface (hero/empty states)."
+        },
+        "selected": {
+          "$value": "{primitive.color.orange.950}",
+          "$description": "Selected rows, active nav item."
         }
       },
       "text": {
         "$type": "color",
         "primary": {
-          "$value": "{primitive.color.gray.50}"
+          "$value": "{primitive.color.gray.50}",
+          "$description": "Headings, body, KPI values."
         },
         "secondary": {
-          "$value": "{primitive.color.gray.400}"
+          "$value": "{primitive.color.gray.300}",
+          "$description": "Labels, metadata. AA on every background incl. muted."
+        },
+        "tertiary": {
+          "$value": "{primitive.color.gray.400}",
+          "$description": "Placeholders, captions. AA on canvas/default/raised/subtle - never on muted."
         },
         "disabled": {
-          "$value": "{primitive.color.gray.600}"
+          "$value": "{primitive.color.gray.600}",
+          "$description": "Disabled text (exempt from WCAG contrast)."
         },
         "inverse": {
           "$value": "{primitive.color.gray.900}"
         },
         "link": {
-          "$value": "{primitive.color.blue.400}"
+          "$value": "{primitive.color.purple.300}"
+        },
+        "link-hover": {
+          "$value": "{primitive.color.purple.200}"
+        },
+        "brand": {
+          "$value": "{primitive.color.orange.300}",
+          "$description": "Orange text on dark surfaces (AA)."
+        },
+        "on-primary": {
+          "$value": "{primitive.color.gray.950}",
+          "$description": "Text/icons on brand.primary fills (light orange)."
+        },
+        "on-secondary": {
+          "$value": "{primitive.color.gray.950}",
+          "$description": "Text/icons on brand.secondary fills (light purple)."
+        },
+        "on-danger": {
+          "$value": "{primitive.color.gray.950}",
+          "$description": "Dark text on the lighter red danger fill (white fails on red.400)."
         },
         "on-brand": {
-          "$value": "{primitive.color.gray.50}"
+          "$value": "{semantic.color.text.on-primary}",
+          "$description": "DEPRECATED alias of text.on-primary (kept for back-compat)."
+        }
+      },
+      "icon": {
+        "$type": "color",
+        "primary": {
+          "$value": "{primitive.color.gray.300}"
+        },
+        "secondary": {
+          "$value": "{primitive.color.gray.400}",
+          "$description": ">= 3:1 on canvas/default/raised/subtle."
+        },
+        "disabled": {
+          "$value": "{primitive.color.gray.600}"
+        },
+        "brand": {
+          "$value": "{primitive.color.orange.400}"
+        },
+        "inverse": {
+          "$value": "{primitive.color.gray.900}"
         }
       },
       "border": {
         "$type": "color",
-        "default": {
-          "$value": "{primitive.color.gray.700}"
-        },
         "subtle": {
-          "$value": "{primitive.color.gray.800}"
+          "$value": "{primitive.color.gray.800}",
+          "$description": "Decorative only (inner table rules)."
+        },
+        "default": {
+          "$value": "{primitive.color.gray.700}",
+          "$description": "Decorative: card, sidebar, topbar, dividers."
         },
         "strong": {
           "$value": "{primitive.color.gray.600}"
         },
+        "input": {
+          "$value": "{primitive.color.gray.500}",
+          "$description": "Form-control boundary; >= 3:1 on canvas, default and raised (WCAG 1.4.11)."
+        },
+        "input-hover": {
+          "$value": "{primitive.color.gray.400}"
+        },
         "focus": {
-          "$value": "{primitive.color.blue.400}"
+          "$value": "{primitive.color.purple.400}",
+          "$description": "Focus ring; >= 3:1 on every dark surface. Keep focus.ring.offset around filled buttons."
+        },
+        "brand": {
+          "$value": "{primitive.color.orange.700}"
+        },
+        "danger": {
+          "$value": "{primitive.color.red.400}"
         }
       },
       "brand": {
         "$type": "color",
         "primary": {
-          "$value": "{primitive.color.blue.500}"
+          "$value": "{primitive.color.orange.300}",
+          "$description": "Light orange. Fills only - pair with text.on-primary."
         },
         "primary-hover": {
-          "$value": "{primitive.color.blue.400}"
+          "$value": "{primitive.color.orange.200}",
+          "$description": "Hover lightens in dark mode."
         },
         "primary-active": {
-          "$value": "{primitive.color.blue.300}"
+          "$value": "{primitive.color.orange.400}"
+        },
+        "primary-strong": {
+          "$value": "{primitive.color.orange.400}",
+          "$description": "Small indicators on dark surfaces (checkbox, switch, progress, tab underline): >= 3:1."
+        },
+        "primary-subtle": {
+          "$value": "{primitive.color.orange.950}"
+        },
+        "primary-muted": {
+          "$value": "{primitive.color.orange.900}"
+        },
+        "primary-text": {
+          "$value": "{primitive.color.orange.200}",
+          "$description": "Text on primary-subtle / primary-muted."
         },
         "secondary": {
-          "$value": "{primitive.color.purple.400}"
+          "$value": "{primitive.color.purple.300}",
+          "$description": "Light purple. Fills only - pair with text.on-secondary."
         },
         "secondary-hover": {
-          "$value": "{primitive.color.purple.300}"
+          "$value": "{primitive.color.purple.200}"
+        },
+        "secondary-active": {
+          "$value": "{primitive.color.purple.400}"
+        },
+        "secondary-strong": {
+          "$value": "{primitive.color.purple.400}"
+        },
+        "secondary-subtle": {
+          "$value": "{primitive.color.purple.950}"
+        },
+        "secondary-muted": {
+          "$value": "{primitive.color.purple.900}"
+        },
+        "secondary-text": {
+          "$value": "{primitive.color.purple.200}",
+          "$description": "Text on secondary-subtle / secondary-muted."
         }
       },
       "feedback": {
         "$type": "color",
+        "$description": "Solid = icons/fills, -text = AA text on dark surfaces AND on -subtle, -subtle = tinted bg, -border = tinted border.",
         "success": {
           "$value": "{primitive.color.green.400}"
         },
+        "success-text": {
+          "$value": "{primitive.color.green.300}"
+        },
         "success-subtle": {
-          "$value": "{primitive.color.green.900}"
+          "$value": "{primitive.color.green.950}"
+        },
+        "success-border": {
+          "$value": "{primitive.color.green.800}"
         },
         "warning": {
-          "$value": "{primitive.color.yellow.400}"
+          "$value": "{primitive.color.yellow.400}",
+          "$description": "Fill/icon; pair with dark text when used as a fill."
+        },
+        "warning-text": {
+          "$value": "{primitive.color.yellow.300}"
         },
         "warning-subtle": {
-          "$value": "{primitive.color.yellow.900}"
+          "$value": "{primitive.color.yellow.950}"
+        },
+        "warning-border": {
+          "$value": "{primitive.color.yellow.800}"
         },
         "danger": {
-          "$value": "{primitive.color.red.400}"
+          "$value": "{primitive.color.red.400}",
+          "$description": "Fill - pair with text.on-danger (dark)."
         },
         "danger-hover": {
           "$value": "{primitive.color.red.300}"
         },
         "danger-active": {
-          "$value": "{primitive.color.red.200}"
+          "$value": "{primitive.color.red.500}"
+        },
+        "danger-text": {
+          "$value": "{primitive.color.red.300}"
         },
         "danger-subtle": {
-          "$value": "{primitive.color.red.900}"
+          "$value": "{primitive.color.red.950}"
+        },
+        "danger-border": {
+          "$value": "{primitive.color.red.800}"
         },
         "info": {
           "$value": "{primitive.color.cyan.400}"
         },
+        "info-text": {
+          "$value": "{primitive.color.cyan.300}"
+        },
         "info-subtle": {
-          "$value": "{primitive.color.cyan.900}"
+          "$value": "{primitive.color.cyan.950}"
+        },
+        "info-border": {
+          "$value": "{primitive.color.cyan.800}"
         }
+      },
+      "data-viz": {
+        "$type": "color",
+        "$description": "Chart colors. Categorical series are >= 3:1 against background.default (gray.900). Same hue order as light mode.",
+        "categorical": {
+          "1": {
+            "$value": "{primitive.color.orange.400}"
+          },
+          "2": {
+            "$value": "{primitive.color.purple.400}"
+          },
+          "3": {
+            "$value": "{primitive.color.teal.400}"
+          },
+          "4": {
+            "$value": "{primitive.color.blue.400}"
+          },
+          "5": {
+            "$value": "{primitive.color.pink.400}"
+          },
+          "6": {
+            "$value": "{primitive.color.yellow.400}"
+          },
+          "7": {
+            "$value": "{primitive.color.cyan.400}"
+          },
+          "8": {
+            "$value": "{primitive.color.gray.400}"
+          }
+        },
+        "sequential": {
+          "$description": "Single-hue orange ramp (low -> high). Inverted vs light: higher values are brighter on dark.",
+          "1": {
+            "$value": "{primitive.color.orange.900}"
+          },
+          "2": {
+            "$value": "{primitive.color.orange.700}"
+          },
+          "3": {
+            "$value": "{primitive.color.orange.500}"
+          },
+          "4": {
+            "$value": "{primitive.color.orange.300}"
+          },
+          "5": {
+            "$value": "{primitive.color.orange.100}"
+          }
+        },
+        "diverging": {
+          "$description": "Purple (negative) - neutral - orange (positive). Strong ends are the brightest.",
+          "negative-strong": {
+            "$value": "{primitive.color.purple.300}"
+          },
+          "negative": {
+            "$value": "{primitive.color.purple.600}"
+          },
+          "neutral": {
+            "$value": "{primitive.color.gray.700}"
+          },
+          "positive": {
+            "$value": "{primitive.color.orange.600}"
+          },
+          "positive-strong": {
+            "$value": "{primitive.color.orange.300}"
+          }
+        },
+        "positive": {
+          "$value": "{semantic.color.feedback.success}"
+        },
+        "negative": {
+          "$value": "{semantic.color.feedback.danger}"
+        },
+        "grid": {
+          "$value": "{primitive.color.gray.800}"
+        },
+        "axis": {
+          "$value": "{primitive.color.gray.500}"
+        },
+        "label": {
+          "$value": "{semantic.color.text.secondary}"
+        }
+      }
+    },
+    "elevation": {
+      "$type": "shadow",
+      "$description": "Mode-dependent shadows. Heavier alpha than light mode; elevation is mainly carried by lighter surfaces (background.raised).",
+      "none": {
+        "$value": {
+          "color": "{primitive.color.alpha.black.40}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 0,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 0,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      },
+      "sm": {
+        "$value": {
+          "color": "{primitive.color.alpha.black.40}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "$description": "Cards."
+      },
+      "md": {
+        "$value": {
+          "color": "{primitive.color.alpha.black.50}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 4,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 12,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -2,
+            "unit": "px"
+          }
+        },
+        "$description": "Hovered cards, dropdowns."
+      },
+      "lg": {
+        "$value": {
+          "color": "{primitive.color.alpha.black.60}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 12,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 24,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -4,
+            "unit": "px"
+          }
+        },
+        "$description": "Popovers, drawers."
+      },
+      "xl": {
+        "$value": {
+          "color": "{primitive.color.alpha.black.70}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 24,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 48,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -12,
+            "unit": "px"
+          }
+        },
+        "$description": "Modals."
       }
     }
   }

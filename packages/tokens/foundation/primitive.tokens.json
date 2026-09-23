@@ -1,10 +1,9 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "primitive": {
-    "$description": "Layer 1 - Primitives: raw, context-free values (palette + size scale). Not consumed directly by components.",
+    "$description": "Layer 1 - Primitives: raw, context-free values (palette, alpha overlays, size, border-width, type scale, line-height, motion). Never consumed directly by components.",
     "font": {
-      "$type": "typography",
-      "$description": "Default font family. Size, scale, default and fallover.",
+      "$description": "Raw font stacks, size scale, weights, line-heights and letter-spacing.",
       "family": {
         "inter": {
           "$value": [
@@ -92,6 +91,14 @@
           },
           "$type": "dimension",
           "$description": "36px. Raw scale step."
+        },
+        "800": {
+          "$value": {
+            "value": 3,
+            "unit": "rem"
+          },
+          "$type": "dimension",
+          "$description": "48px. Raw scale step (large KPI numbers)."
         }
       },
       "weight": {
@@ -125,11 +132,49 @@
           "$type": "fontWeight",
           "$description": "Black font weight."
         }
+      },
+      "line-height": {
+        "$type": "number",
+        "$description": "Unitless line-height multipliers.",
+        "tight": {
+          "$value": 1.2
+        },
+        "snug": {
+          "$value": 1.35
+        },
+        "normal": {
+          "$value": 1.5
+        },
+        "relaxed": {
+          "$value": 1.625
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$description": "Tracking values.",
+        "tight": {
+          "$value": {
+            "value": -0.5,
+            "unit": "px"
+          }
+        },
+        "normal": {
+          "$value": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        "wide": {
+          "$value": {
+            "value": 0.5,
+            "unit": "px"
+          }
+        }
       }
     },
     "color": {
       "$type": "color",
-      "$description": "Raw hue ramps (9 hues + gray), 50 (lightest) to 900 (darkest). Never used directly in UI.",
+      "$description": "Raw hue ramps (9 hues + gray), 50 (lightest) to 950 (darkest), plus pure white/black and alpha overlays. Never used directly in UI.",
       "gray": {
         "50": {
           "$value": {
@@ -228,6 +273,16 @@
               0.0941,
               0.0941,
               0.1059
+            ]
+          }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0353,
+              0.0353,
+              0.0431
             ]
           }
         }
@@ -332,6 +387,16 @@
               0.1137
             ]
           }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2706,
+              0.0392,
+              0.0392
+            ]
+          }
         }
       },
       "orange": {
@@ -432,6 +497,16 @@
               0.4863,
               0.1765,
               0.0706
+            ]
+          }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2627,
+              0.0784,
+              0.0275
             ]
           }
         }
@@ -536,6 +611,16 @@
               0.0706
             ]
           }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2588,
+              0.1255,
+              0.0235
+            ]
+          }
         }
       },
       "green": {
@@ -636,6 +721,16 @@
               0.0784,
               0.3255,
               0.1765
+            ]
+          }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0196,
+              0.1804,
+              0.0863
             ]
           }
         }
@@ -740,6 +835,16 @@
               0.2902
             ]
           }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0157,
+              0.1843,
+              0.1804
+            ]
+          }
         }
       },
       "cyan": {
@@ -840,6 +945,16 @@
               0.0863,
               0.3059,
               0.3882
+            ]
+          }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0314,
+              0.2,
+              0.2667
             ]
           }
         }
@@ -944,6 +1059,16 @@
               0.5412
             ]
           }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0902,
+              0.1451,
+              0.3294
+            ]
+          }
         }
       },
       "purple": {
@@ -1044,6 +1169,16 @@
               0.3451,
               0.1098,
               0.5294
+            ]
+          }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2314,
+              0.0275,
+              0.3922
             ]
           }
         }
@@ -1148,6 +1283,188 @@
               0.2627
             ]
           }
+        },
+        "950": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3137,
+              0.0275,
+              0.1412
+            ]
+          }
+        }
+      },
+      "white": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "$description": "Pure white. Card/surface base."
+      },
+      "black": {
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "$description": "Pure black. Only used as the base for alpha overlays."
+      },
+      "alpha": {
+        "$description": "Translucent black/white for scrims, shadows and hover overlays.",
+        "black": {
+          "4": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.04
+            }
+          },
+          "8": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.08
+            }
+          },
+          "12": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.12
+            }
+          },
+          "16": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.16
+            }
+          },
+          "40": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.4
+            }
+          },
+          "50": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.5
+            }
+          },
+          "60": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.6
+            }
+          },
+          "70": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "alpha": 0.7
+            }
+          }
+        },
+        "white": {
+          "0": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "alpha": 0
+            }
+          },
+          "4": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "alpha": 0.04
+            }
+          },
+          "8": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "alpha": 0.08
+            }
+          },
+          "12": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "alpha": 0.12
+            }
+          },
+          "50": {
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "alpha": 0.5
+            }
+          }
         }
       }
     },
@@ -1196,9 +1513,21 @@
           "unit": "px"
         }
       },
+      "7": {
+        "$value": {
+          "value": 28,
+          "unit": "px"
+        }
+      },
       "8": {
         "$value": {
           "value": 32,
+          "unit": "px"
+        }
+      },
+      "9": {
+        "$value": {
+          "value": 36,
           "unit": "px"
         }
       },
@@ -1214,9 +1543,21 @@
           "unit": "px"
         }
       },
+      "14": {
+        "$value": {
+          "value": 56,
+          "unit": "px"
+        }
+      },
       "16": {
         "$value": {
           "value": 64,
+          "unit": "px"
+        }
+      },
+      "18": {
+        "$value": {
+          "value": 72,
           "unit": "px"
         }
       },
@@ -1250,11 +1591,145 @@
           "unit": "px"
         }
       },
+      "60": {
+        "$value": {
+          "value": 240,
+          "unit": "px"
+        }
+      },
       "64": {
         "$value": {
           "value": 256,
           "unit": "px"
         }
+      },
+      "72": {
+        "$value": {
+          "value": 288,
+          "unit": "px"
+        }
+      },
+      "80": {
+        "$value": {
+          "value": 320,
+          "unit": "px"
+        }
+      },
+      "120": {
+        "$value": {
+          "value": 480,
+          "unit": "px"
+        }
+      },
+      "160": {
+        "$value": {
+          "value": 640,
+          "unit": "px"
+        }
+      }
+    },
+    "border-width": {
+      "$type": "dimension",
+      "$description": "Raw stroke widths.",
+      "0": {
+        "$value": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "1": {
+        "$value": {
+          "value": 1,
+          "unit": "px"
+        }
+      },
+      "2": {
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      },
+      "4": {
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        }
+      }
+    },
+    "duration": {
+      "$type": "duration",
+      "$description": "Raw animation durations.",
+      "75": {
+        "$value": {
+          "value": 75,
+          "unit": "ms"
+        }
+      },
+      "150": {
+        "$value": {
+          "value": 150,
+          "unit": "ms"
+        }
+      },
+      "200": {
+        "$value": {
+          "value": 200,
+          "unit": "ms"
+        }
+      },
+      "300": {
+        "$value": {
+          "value": 300,
+          "unit": "ms"
+        }
+      },
+      "500": {
+        "$value": {
+          "value": 500,
+          "unit": "ms"
+        }
+      },
+      "1000": {
+        "$value": {
+          "value": 1000,
+          "unit": "ms"
+        }
+      }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "$description": "Raw easing curves.",
+      "linear": {
+        "$value": [
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "standard": {
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ]
+      },
+      "decelerate": {
+        "$value": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "accelerate": {
+        "$value": [
+          0.3,
+          0,
+          1,
+          1
+        ]
       }
     }
   }

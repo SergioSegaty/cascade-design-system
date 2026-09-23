@@ -13,9 +13,9 @@ const meta = {
     },
     variant: {
       control: 'radio',
-      options: ['primary', 'secondary', 'danger', 'ghost'],
+      options: ['primary', 'secondary', 'outline', 'danger', 'ghost', 'link'],
       description:
-        '`primary` for the main action, `secondary` for alternatives, `danger` for destructive actions, `ghost` for low-emphasis actions.',
+        '`primary` for the main action, `secondary` for alternatives, `outline` for neutral actions, `danger` for destructive actions, `ghost` for low-emphasis actions, `link` for inline, text-like actions.',
     },
     disabled: {
       control: 'boolean',
@@ -69,5 +69,17 @@ export const Ghost: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    variant: 'outline',
+  },
+};
+
+export const Link: Story = {
+  args: {
+    variant: 'link',
   },
 };

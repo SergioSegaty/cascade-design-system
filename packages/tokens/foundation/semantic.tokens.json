@@ -1,6 +1,7 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "semantic": {
+    "$description": "Layer 2 - Semantic, non-color tokens. Theme-independent. Colors and elevation live in the mode files (color-light).",
     "font": {
       "family": {
         "body": {
@@ -59,6 +60,11 @@
           "$value": "{primitive.font.size.700}",
           "$type": "dimension",
           "$description": "Hero/display headings (h1)."
+        },
+        "5xl": {
+          "$value": "{primitive.font.size.800}",
+          "$type": "dimension",
+          "$description": "KPI / hero metric values."
         }
       },
       "weight": {
@@ -71,14 +77,202 @@
           "$value": "{primitive.font.weight.medium}",
           "$description": "Interactive labels — buttons, tabs, form labels."
         },
+        "semibold": {
+          "$value": "{primitive.font.weight.semi}",
+          "$description": "Card titles, table headers, KPI values."
+        },
         "bold": {
           "$value": "{primitive.font.weight.bold}",
           "$description": "Headings and strong emphasis."
         }
+      },
+      "line-height": {
+        "$type": "number",
+        "heading": {
+          "$value": "{primitive.font.line-height.tight}"
+        },
+        "title": {
+          "$value": "{primitive.font.line-height.snug}"
+        },
+        "body": {
+          "$value": "{primitive.font.line-height.normal}"
+        },
+        "prose": {
+          "$value": "{primitive.font.line-height.relaxed}"
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "heading": {
+          "$value": "{primitive.font.letter-spacing.tight}"
+        },
+        "body": {
+          "$value": "{primitive.font.letter-spacing.normal}"
+        },
+        "overline": {
+          "$value": "{primitive.font.letter-spacing.wide}"
+        }
+      }
+    },
+    "typography": {
+      "$type": "typography",
+      "$description": "Composite text styles for a dashboard. Components pick a style instead of assembling size/weight/line-height themselves.",
+      "display": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.4xl}",
+          "fontWeight": "{semantic.font.weight.bold}",
+          "lineHeight": "{semantic.font.line-height.heading}",
+          "letterSpacing": "{semantic.font.letter-spacing.heading}"
+        }
+      },
+      "h1": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.3xl}",
+          "fontWeight": "{semantic.font.weight.bold}",
+          "lineHeight": "{semantic.font.line-height.heading}",
+          "letterSpacing": "{semantic.font.letter-spacing.heading}"
+        }
+      },
+      "h2": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.2xl}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.heading}",
+          "letterSpacing": "{semantic.font.letter-spacing.heading}"
+        }
+      },
+      "h3": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.xl}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "h4": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.lg}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "h5": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.md}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "h6": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.sm}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "body-lg": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.lg}",
+          "fontWeight": "{semantic.font.weight.regular}",
+          "lineHeight": "{semantic.font.line-height.body}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "body-md": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.md}",
+          "fontWeight": "{semantic.font.weight.regular}",
+          "lineHeight": "{semantic.font.line-height.body}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "body-sm": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.sm}",
+          "fontWeight": "{semantic.font.weight.regular}",
+          "lineHeight": "{semantic.font.line-height.body}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "label-md": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.sm}",
+          "fontWeight": "{semantic.font.weight.medium}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "label-sm": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.xs}",
+          "fontWeight": "{semantic.font.weight.medium}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "caption": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.xs}",
+          "fontWeight": "{semantic.font.weight.regular}",
+          "lineHeight": "{semantic.font.line-height.body}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
+      },
+      "overline": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.body}",
+          "fontSize": "{semantic.font.size.xs}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.title}",
+          "letterSpacing": "{semantic.font.letter-spacing.overline}"
+        }
+      },
+      "kpi": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.3xl}",
+          "fontWeight": "{semantic.font.weight.semibold}",
+          "lineHeight": "{semantic.font.line-height.heading}",
+          "letterSpacing": "{semantic.font.letter-spacing.heading}"
+        }
+      },
+      "kpi-lg": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.heading}",
+          "fontSize": "{semantic.font.size.5xl}",
+          "fontWeight": "{semantic.font.weight.bold}",
+          "lineHeight": "{semantic.font.line-height.heading}",
+          "letterSpacing": "{semantic.font.letter-spacing.heading}"
+        }
+      },
+      "code": {
+        "$value": {
+          "fontFamily": "{semantic.font.family.code}",
+          "fontSize": "{semantic.font.size.sm}",
+          "fontWeight": "{semantic.font.weight.regular}",
+          "lineHeight": "{semantic.font.line-height.body}",
+          "letterSpacing": "{semantic.font.letter-spacing.body}"
+        }
       }
     },
     "focus": {
-      "$description": "Keyboard focus indicator shared by every interactive component. Ring color is semantic.color.border.focus.",
+      "$description": "Keyboard focus indicator shared by every interactive component. Ring color is semantic.color.border.focus (>= 3:1 on every surface).",
       "ring": {
         "$type": "dimension",
         "width": {
@@ -142,31 +336,6 @@
         "$value": "{semantic.spacing.xl}"
       }
     },
-    "round": {
-      "$type": "dimension",
-      "$description": "Border-radius scale.",
-      "none": {
-        "$value": "{primitive.size.0}"
-      },
-      "sm": {
-        "$value": "{primitive.size.1}"
-      },
-      "md": {
-        "$value": "{primitive.size.2}"
-      },
-      "lg": {
-        "$value": "{primitive.size.3}"
-      },
-      "xl": {
-        "$value": "{primitive.size.4}"
-      },
-      "full": {
-        "$value": {
-          "value": 9999,
-          "unit": "px"
-        }
-      }
-    },
     "gap": {
       "$type": "dimension",
       "$description": "Gap scale for flex/grid layouts, aliased from semantic.spacing.",
@@ -186,8 +355,131 @@
         "$value": "{semantic.spacing.xl}"
       }
     },
+    "stack": {
+      "$type": "dimension",
+      "$description": "Vertical rhythm scale for stacked/flow layouts (e.g. a <Stack> component), aliased from semantic.spacing.",
+      "xs": {
+        "$value": "{semantic.spacing.xs}"
+      },
+      "sm": {
+        "$value": "{semantic.spacing.sm}"
+      },
+      "md": {
+        "$value": "{semantic.spacing.md}"
+      },
+      "lg": {
+        "$value": "{semantic.spacing.lg}"
+      },
+      "xl": {
+        "$value": "{semantic.spacing.xl}"
+      },
+      "2xl": {
+        "$value": "{semantic.spacing.2xl}"
+      }
+    },
+    "round": {
+      "$type": "dimension",
+      "$description": "Border-radius scale.",
+      "none": {
+        "$value": "{primitive.size.0}"
+      },
+      "sm": {
+        "$value": "{primitive.size.1}"
+      },
+      "md": {
+        "$value": "{primitive.size.2}"
+      },
+      "lg": {
+        "$value": "{primitive.size.3}"
+      },
+      "xl": {
+        "$value": "{primitive.size.4}"
+      },
+      "2xl": {
+        "$value": "{primitive.size.6}"
+      },
+      "full": {
+        "$value": {
+          "value": 9999,
+          "unit": "px"
+        }
+      }
+    },
+    "border": {
+      "$type": "dimension",
+      "$description": "Stroke widths.",
+      "width": {
+        "none": {
+          "$value": "{primitive.border-width.0}"
+        },
+        "default": {
+          "$value": "{primitive.border-width.1}"
+        },
+        "strong": {
+          "$value": "{primitive.border-width.2}"
+        },
+        "indicator": {
+          "$value": "{primitive.border-width.4}"
+        }
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "Fixed element sizes: interactive control heights, icons, avatars.",
+      "control": {
+        "sm": {
+          "$value": "{primitive.size.8}"
+        },
+        "md": {
+          "$value": "{primitive.size.10}"
+        },
+        "lg": {
+          "$value": "{primitive.size.12}"
+        }
+      },
+      "icon": {
+        "xs": {
+          "$value": "{primitive.size.3}"
+        },
+        "sm": {
+          "$value": "{primitive.size.4}"
+        },
+        "md": {
+          "$value": "{primitive.size.5}"
+        },
+        "lg": {
+          "$value": "{primitive.size.6}"
+        },
+        "xl": {
+          "$value": "{primitive.size.8}"
+        }
+      },
+      "avatar": {
+        "xs": {
+          "$value": "{primitive.size.6}"
+        },
+        "sm": {
+          "$value": "{primitive.size.8}"
+        },
+        "md": {
+          "$value": "{primitive.size.10}"
+        },
+        "lg": {
+          "$value": "{primitive.size.12}"
+        },
+        "xl": {
+          "$value": "{primitive.size.16}"
+        }
+      },
+      "target": {
+        "min": {
+          "$value": "{primitive.size.6}",
+          "$description": "Minimum pointer target for small interactive elements (WCAG 2.5.8)."
+        }
+      }
+    },
     "layout": {
-      "$description": "Page/container layout tokens: breakpoints, max-widths, grid.",
+      "$description": "Page/container layout tokens: breakpoints, max-widths, grid and dashboard shell dimensions.",
       "breakpoint": {
         "$type": "dimension",
         "sm": {
@@ -234,6 +526,9 @@
         },
         "xl": {
           "$value": "{semantic.layout.breakpoint.xl}"
+        },
+        "2xl": {
+          "$value": "{semantic.layout.breakpoint.2xl}"
         }
       },
       "gutter": {
@@ -243,30 +538,132 @@
       "columns": {
         "$value": 12,
         "$type": "number"
+      },
+      "sidebar": {
+        "$type": "dimension",
+        "$description": "App-shell navigation rail.",
+        "width": {
+          "$value": "{primitive.size.64}",
+          "$description": "256px expanded."
+        },
+        "width-collapsed": {
+          "$value": "{primitive.size.18}",
+          "$description": "72px icon-only rail."
+        }
+      },
+      "topbar": {
+        "$type": "dimension",
+        "height": {
+          "$value": "{primitive.size.16}",
+          "$description": "64px."
+        }
+      },
+      "content": {
+        "$type": "dimension",
+        "max-width": {
+          "$value": "{semantic.layout.breakpoint.2xl}",
+          "$description": "Main content never grows past 1536px on ultra-wide screens."
+        },
+        "padding-inline": {
+          "$value": "{semantic.spacing.lg}"
+        },
+        "padding-block": {
+          "$value": "{semantic.spacing.lg}"
+        }
+      },
+      "grid": {
+        "$type": "dimension",
+        "$description": "Dashboard widget grid.",
+        "gap": {
+          "$value": "{semantic.spacing.lg}"
+        },
+        "gap-compact": {
+          "$value": "{semantic.spacing.md}"
+        },
+        "card-min-width": {
+          "$value": "{primitive.size.72}",
+          "$description": "288px - min column width for auto-fill KPI/card grids."
+        }
+      },
+      "section-gap": {
+        "$value": "{semantic.spacing.xl}",
+        "$type": "dimension",
+        "$description": "Vertical space between dashboard sections."
       }
     },
-    "stack": {
-      "$type": "dimension",
-      "$description": "Vertical rhythm scale for stacked/flow layouts (e.g. a <Stack> component), aliased from semantic.spacing.",
-      "xs": {
-        "$value": "{semantic.spacing.xs}"
+    "z-index": {
+      "$type": "number",
+      "$description": "Stacking order. Keep gaps so one-off layers can slot in between.",
+      "base": {
+        "$value": 0
       },
-      "sm": {
-        "$value": "{semantic.spacing.sm}"
+      "raised": {
+        "$value": 10
       },
-      "md": {
-        "$value": "{semantic.spacing.md}"
+      "sticky": {
+        "$value": 100
       },
-      "lg": {
-        "$value": "{semantic.spacing.lg}"
+      "sidebar": {
+        "$value": 200
       },
-      "xl": {
-        "$value": "{semantic.spacing.xl}"
+      "topbar": {
+        "$value": 300
       },
-      "2xl": {
-        "$value": "{semantic.spacing.2xl}"
+      "dropdown": {
+        "$value": 1000
+      },
+      "overlay": {
+        "$value": 1300
+      },
+      "modal": {
+        "$value": 1400
+      },
+      "toast": {
+        "$value": 1500
+      },
+      "tooltip": {
+        "$value": 1600
       }
     },
-    "$description": "Non-color semantic tokens. Theme-independent."
+    "motion": {
+      "$description": "Transition timing.",
+      "duration": {
+        "$type": "duration",
+        "instant": {
+          "$value": "{primitive.duration.75}"
+        },
+        "fast": {
+          "$value": "{primitive.duration.150}"
+        },
+        "normal": {
+          "$value": "{primitive.duration.200}"
+        },
+        "slow": {
+          "$value": "{primitive.duration.300}"
+        },
+        "chart": {
+          "$value": "{primitive.duration.500}"
+        },
+        "loop": {
+          "$value": "{primitive.duration.1000}",
+          "$description": "One cycle of a continuously looping animation (spinner rotation)."
+        }
+      },
+      "easing": {
+        "$type": "cubicBezier",
+        "standard": {
+          "$value": "{primitive.easing.standard}"
+        },
+        "enter": {
+          "$value": "{primitive.easing.decelerate}"
+        },
+        "exit": {
+          "$value": "{primitive.easing.accelerate}"
+        },
+        "linear": {
+          "$value": "{primitive.easing.linear}"
+        }
+      }
+    }
   }
 }

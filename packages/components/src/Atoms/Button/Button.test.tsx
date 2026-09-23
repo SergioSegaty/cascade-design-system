@@ -46,7 +46,7 @@ describe('Button', () => {
     expectClasses(screen.getByRole('button', { name: 'Click me' }), buttonVariant());
   });
 
-  it.each(['primary', 'secondary', 'danger', 'ghost'] as const)(
+  it.each(['primary', 'secondary', 'outline', 'danger', 'ghost', 'link'] as const)(
     'applies the class for the %s variant',
     (variant) => {
       render(<Button variant={variant}>Click me</Button>);

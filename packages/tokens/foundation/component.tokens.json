@@ -1,11 +1,11 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "component": {
-    "$description": "Layer 3 - Component: tokens scoped to a specific UI component, composed exclusively from semantic tokens.",
+    "$description": "Layer 3 - Component: tokens scoped to a specific UI component, composed exclusively from semantic tokens. Atoms: button, icon-button, input, checkbox, radio, switch, badge, avatar, tooltip, link, divider, progress, skeleton. Layout: app-shell, sidebar, topbar, page, card, stat-card, table, tabs, segmented-control, dropdown, modal, alert, chart.",
     "button": {
-      "$description": "Layer 3 - Component: Button. Consumes only semantic (and, for disabled states, primitive) tokens - never raw values.",
+      "$description": "Atom - Button. Consumes only semantic tokens.",
       "size": {
-        "$description": "Padding and min-height per button size.",
+        "$description": "Padding, min-height, font and icon size per button size.",
         "sm": {
           "padding-inline": {
             "$value": "{semantic.padding.sm}",
@@ -16,8 +16,16 @@
             "$type": "dimension"
           },
           "min-height": {
-            "$value": "{primitive.size.8}",
+            "$value": "{semantic.size.control.sm}",
             "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.label-sm}",
+            "$type": "typography"
           }
         },
         "md": {
@@ -30,8 +38,16 @@
             "$type": "dimension"
           },
           "min-height": {
-            "$value": "{primitive.size.10}",
+            "$value": "{semantic.size.control.md}",
             "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.label-md}",
+            "$type": "typography"
           }
         },
         "lg": {
@@ -44,36 +60,54 @@
             "$type": "dimension"
           },
           "min-height": {
-            "$value": "{primitive.size.12}",
+            "$value": "{semantic.size.control.lg}",
             "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.label-md}",
+            "$type": "typography"
           }
         }
       },
       "color": {
-        "$description": "Color tokens per button variant and interaction state, composed from semantic.color.",
+        "$description": "Color per variant and state. Primary = light orange, secondary = light purple, both with dark text.",
         "primary": {
           "$type": "color",
           "background": {
-            "$description": "Darker than semantic.color.brand.primary so on-brand text meets WCAG AA (4.5:1) in every state and theme.",
             "default": {
-              "$value": "{primitive.color.blue.600}"
+              "$value": "{semantic.color.brand.primary}"
             },
             "hover": {
-              "$value": "{primitive.color.blue.700}"
+              "$value": "{semantic.color.brand.primary-hover}"
             },
             "active": {
-              "$value": "{primitive.color.blue.800}"
+              "$value": "{semantic.color.brand.primary-active}"
             },
             "disabled": {
-              "$value": "{primitive.color.gray.200}"
+              "$value": "{semantic.color.background.disabled}"
             }
           },
           "text": {
             "default": {
-              "$value": "{semantic.color.text.on-brand}"
+              "$value": "{semantic.color.text.on-primary}"
             },
             "disabled": {
-              "$value": "{primitive.color.gray.400}"
+              "$value": "{semantic.color.text.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$value": "{semantic.color.brand.primary-active}"
+            },
+            "hover": {
+              "$value": "{semantic.color.brand.primary-strong}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.border.subtle}"
             }
           }
         },
@@ -81,16 +115,52 @@
           "$type": "color",
           "background": {
             "default": {
-              "$value": "{semantic.color.background.subtle}"
+              "$value": "{semantic.color.brand.secondary}"
             },
             "hover": {
-              "$value": "{primitive.color.gray.200}"
+              "$value": "{semantic.color.brand.secondary-hover}"
             },
             "active": {
-              "$value": "{primitive.color.gray.300}"
+              "$value": "{semantic.color.brand.secondary-active}"
             },
             "disabled": {
-              "$value": "{primitive.color.gray.100}"
+              "$value": "{semantic.color.background.disabled}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.on-secondary}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.text.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$value": "{semantic.color.brand.secondary-active}"
+            },
+            "hover": {
+              "$value": "{semantic.color.brand.secondary-strong}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.border.subtle}"
+            }
+          }
+        },
+        "outline": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.background.default}"
+            },
+            "hover": {
+              "$value": "{semantic.color.background.subtle}"
+            },
+            "active": {
+              "$value": "{semantic.color.background.muted}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.background.default}"
             }
           },
           "text": {
@@ -103,7 +173,38 @@
           },
           "border": {
             "default": {
+              "$value": "{semantic.color.border.strong}"
+            },
+            "hover": {
+              "$value": "{semantic.color.border.input}"
+            },
+            "disabled": {
               "$value": "{semantic.color.border.default}"
+            }
+          }
+        },
+        "ghost": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.background.transparent}"
+            },
+            "hover": {
+              "$value": "{semantic.color.background.subtle}"
+            },
+            "active": {
+              "$value": "{semantic.color.background.muted}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.background.transparent}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.primary}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.text.disabled}"
             }
           }
         },
@@ -120,58 +221,70 @@
               "$value": "{semantic.color.feedback.danger-active}"
             },
             "disabled": {
-              "$value": "{primitive.color.gray.200}"
+              "$value": "{semantic.color.background.disabled}"
             }
           },
           "text": {
             "default": {
-              "$value": "{semantic.color.text.on-brand}"
+              "$value": "{semantic.color.text.on-danger}"
             },
             "disabled": {
-              "$value": "{primitive.color.gray.400}"
+              "$value": "{semantic.color.text.disabled}"
+            }
+          },
+          "border": {
+            "default": {
+              "$value": "{semantic.color.feedback.danger-active}"
+            },
+            "hover": {
+              "$value": "{semantic.color.feedback.danger-active}"
+            },
+            "disabled": {
+              "$value": "{semantic.color.border.subtle}"
             }
           }
         },
-        "ghost": {
+        "link": {
           "$type": "color",
           "background": {
             "default": {
-              "$value": {
-                "colorSpace": "srgb",
-                "components": [
-                  0,
-                  0,
-                  0
-                ],
-                "alpha": 0
-              }
+              "$value": "{semantic.color.background.transparent}"
             },
             "hover": {
-              "$value": "{primitive.color.gray.100}"
+              "$value": "{semantic.color.background.transparent}"
             },
             "active": {
-              "$value": "{primitive.color.gray.200}"
+              "$value": "{semantic.color.background.transparent}"
             },
             "disabled": {
-              "$value": {
-                "colorSpace": "srgb",
-                "components": [
-                  0,
-                  0,
-                  0
-                ],
-                "alpha": 0
-              }
+              "$value": "{semantic.color.background.transparent}"
             }
           },
           "text": {
             "default": {
-              "$value": "{semantic.color.text.primary}"
+              "$value": "{semantic.color.text.link}"
+            },
+            "hover": {
+              "$value": "{semantic.color.text.link-hover}"
             },
             "disabled": {
               "$value": "{semantic.color.text.disabled}"
             }
           }
+        }
+      },
+      "focus-ring": {
+        "color": {
+          "$value": "{semantic.color.border.focus}",
+          "$type": "color"
+        },
+        "width": {
+          "$value": "{semantic.focus.ring.width}",
+          "$type": "dimension"
+        },
+        "offset": {
+          "$value": "{semantic.focus.ring.offset}",
+          "$type": "dimension"
         }
       },
       "radius": {
@@ -185,20 +298,670 @@
       "border": {
         "$type": "dimension",
         "width": {
-          "$value": {
-            "value": 1,
-            "unit": "px"
+          "$value": "{semantic.border.width.default}"
+        }
+      },
+      "font-weight": {
+        "$value": "{semantic.font.weight.semibold}",
+        "$type": "fontWeight"
+      },
+      "shadow": {
+        "$type": "shadow",
+        "$description": "Elevation of filled and outline variants: raised at rest, lifted on hover, flat when pressed or disabled.",
+        "default": {
+          "$value": "{semantic.elevation.sm}"
+        },
+        "hover": {
+          "$value": "{semantic.elevation.md}"
+        },
+        "active": {
+          "$value": "{semantic.elevation.none}"
+        }
+      },
+      "transition": {
+        "duration": {
+          "$value": "{semantic.motion.duration.fast}",
+          "$type": "duration"
+        },
+        "easing": {
+          "$value": "{semantic.motion.easing.standard}",
+          "$type": "cubicBezier"
+        }
+      }
+    },
+    "icon-button": {
+      "$description": "Atom - Icon-only button (toolbar, table row actions, topbar). Square; reuses button.color variants.",
+      "size": {
+        "sm": {
+          "size": {
+            "$value": "{semantic.size.control.sm}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.sm}",
+            "$type": "dimension"
+          }
+        },
+        "md": {
+          "size": {
+            "$value": "{semantic.size.control.md}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.md}",
+            "$type": "dimension"
+          }
+        },
+        "lg": {
+          "size": {
+            "$value": "{semantic.size.control.lg}",
+            "$type": "dimension"
+          },
+          "icon-size": {
+            "$value": "{semantic.size.icon.lg}",
+            "$type": "dimension"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "icon": {
+          "default": {
+            "$value": "{semantic.color.icon.primary}"
+          },
+          "hover": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.icon.disabled}"
+          }
+        },
+        "background": {
+          "default": {
+            "$value": "{semantic.color.background.transparent}"
+          },
+          "hover": {
+            "$value": "{semantic.color.background.hover}"
+          },
+          "active": {
+            "$value": "{semantic.color.background.pressed}"
+          }
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      }
+    },
+    "input": {
+      "$description": "Atom - Text input / select / textarea / search field.",
+      "size": {
+        "sm": {
+          "min-height": {
+            "$value": "{semantic.size.control.sm}",
+            "$type": "dimension"
+          },
+          "padding-inline": {
+            "$value": "{semantic.padding.sm}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.xs}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.body-sm}",
+            "$type": "typography"
+          }
+        },
+        "md": {
+          "min-height": {
+            "$value": "{semantic.size.control.md}",
+            "$type": "dimension"
+          },
+          "padding-inline": {
+            "$value": "{semantic.padding.sm}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.body-md}",
+            "$type": "typography"
+          }
+        },
+        "lg": {
+          "min-height": {
+            "$value": "{semantic.size.control.lg}",
+            "$type": "dimension"
+          },
+          "padding-inline": {
+            "$value": "{semantic.padding.md}",
+            "$type": "dimension"
+          },
+          "padding-block": {
+            "$value": "{semantic.spacing.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.body-md}",
+            "$type": "typography"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "default": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.background.disabled}"
+          },
+          "readonly": {
+            "$value": "{semantic.color.background.subtle}"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "placeholder": {
+            "$value": "{semantic.color.text.tertiary}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.text.disabled}"
+          }
+        },
+        "border": {
+          "default": {
+            "$value": "{semantic.color.border.input}"
+          },
+          "hover": {
+            "$value": "{semantic.color.border.input-hover}"
+          },
+          "focus": {
+            "$value": "{semantic.color.border.focus}"
+          },
+          "invalid": {
+            "$value": "{semantic.color.border.danger}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.border.default}"
+          }
+        },
+        "icon": {
+          "$value": "{semantic.color.icon.secondary}"
+        }
+      },
+      "label": {
+        "typography": {
+          "$value": "{semantic.typography.label-md}",
+          "$type": "typography"
+        },
+        "color": {
+          "$value": "{semantic.color.text.primary}",
+          "$type": "color"
+        },
+        "gap": {
+          "$value": "{semantic.gap.xs}",
+          "$type": "dimension"
+        }
+      },
+      "helper": {
+        "typography": {
+          "$value": "{semantic.typography.caption}",
+          "$type": "typography"
+        },
+        "color": {
+          "$value": "{semantic.color.text.secondary}",
+          "$type": "color"
+        },
+        "color-invalid": {
+          "$value": "{semantic.color.feedback.danger-text}",
+          "$type": "color"
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      },
+      "border": {
+        "$type": "dimension",
+        "width": {
+          "$value": "{semantic.border.width.default}"
+        },
+        "width-focus": {
+          "$value": "{semantic.border.width.strong}"
+        }
+      }
+    },
+    "checkbox": {
+      "$description": "Atom - Checkbox. Checked fill uses brand.primary-strong (>= 3:1 on white) with a dark check mark.",
+      "size": {
+        "$value": "{semantic.size.icon.sm}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "default": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "checked": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          },
+          "checked-hover": {
+            "$value": "{semantic.color.brand.primary-active}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.background.disabled}"
+          }
+        },
+        "border": {
+          "default": {
+            "$value": "{semantic.color.border.input}"
+          },
+          "hover": {
+            "$value": "{semantic.color.border.input-hover}"
+          },
+          "checked": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          },
+          "invalid": {
+            "$value": "{semantic.color.border.danger}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.border.default}"
+          }
+        },
+        "indicator": {
+          "default": {
+            "$value": "{semantic.color.text.on-primary}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.icon.disabled}"
+          }
+        },
+        "label": {
+          "$value": "{semantic.color.text.primary}"
+        }
+      },
+      "gap": {
+        "$value": "{semantic.gap.sm}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.sm}",
+        "$type": "dimension"
+      }
+    },
+    "radio": {
+      "$description": "Atom - Radio. Same palette as checkbox; indicator is the inner dot.",
+      "size": {
+        "$value": "{semantic.size.icon.sm}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "default": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "checked": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          },
+          "checked-hover": {
+            "$value": "{semantic.color.brand.primary-active}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.background.disabled}"
+          }
+        },
+        "border": {
+          "default": {
+            "$value": "{semantic.color.border.input}"
+          },
+          "hover": {
+            "$value": "{semantic.color.border.input-hover}"
+          },
+          "checked": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          },
+          "invalid": {
+            "$value": "{semantic.color.border.danger}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.border.default}"
+          }
+        },
+        "indicator": {
+          "default": {
+            "$value": "{semantic.color.text.on-primary}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.icon.disabled}"
+          }
+        },
+        "label": {
+          "$value": "{semantic.color.text.primary}"
+        }
+      },
+      "gap": {
+        "$value": "{semantic.gap.sm}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.full}",
+        "$type": "dimension"
+      }
+    },
+    "switch": {
+      "$description": "Atom - Switch/toggle.",
+      "track": {
+        "width": {
+          "$value": "{semantic.size.control.md}",
+          "$type": "dimension"
+        },
+        "height": {
+          "$value": "{semantic.size.icon.lg}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{semantic.round.full}",
+          "$type": "dimension"
+        }
+      },
+      "thumb": {
+        "size": {
+          "$value": "{semantic.size.icon.md}",
+          "$type": "dimension"
+        }
+      },
+      "color": {
+        "$type": "color",
+        "track": {
+          "off": {
+            "$value": "{semantic.color.border.input}"
+          },
+          "off-hover": {
+            "$value": "{semantic.color.border.input-hover}"
+          },
+          "on": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          },
+          "on-hover": {
+            "$value": "{semantic.color.brand.primary-active}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.background.muted}"
+          }
+        },
+        "thumb": {
+          "default": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.background.subtle}"
           }
         }
       }
     },
-    "divider": {
-      "$description": "Layer 3 - Component: Divider. Line thickness and color per emphasis, composed from semantic.color.border.",
-      "thickness": {
-        "$value": {
-          "value": 1,
-          "unit": "px"
+    "badge": {
+      "$description": "Atom - Badge / status pill / tag (table status, counts, filters).",
+      "padding-block": {
+        "$value": "{semantic.spacing.none}",
+        "$type": "dimension"
+      },
+      "size": {
+        "$description": "Height, inline padding and type per badge/tag size.",
+        "sm": {
+          "min-height": {
+            "$value": "{semantic.size.icon.md}",
+            "$type": "dimension"
+          },
+          "padding-inline": {
+            "$value": "{semantic.spacing.xs}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.label-sm}",
+            "$type": "typography"
+          }
         },
+        "md": {
+          "min-height": {
+            "$value": "{semantic.size.avatar.xs}",
+            "$type": "dimension"
+          },
+          "padding-inline": {
+            "$value": "{semantic.spacing.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{semantic.typography.label-sm}",
+            "$type": "typography"
+          }
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.full}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.gap.xs}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "neutral": {
+          "background": {
+            "$value": "{semantic.color.background.subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.text.secondary}"
+          },
+          "border": {
+            "$value": "{semantic.color.border.default}"
+          }
+        },
+        "primary": {
+          "background": {
+            "$value": "{semantic.color.brand.primary-muted}"
+          },
+          "text": {
+            "$value": "{semantic.color.brand.primary-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.border.brand}"
+          }
+        },
+        "secondary": {
+          "background": {
+            "$value": "{semantic.color.brand.secondary-muted}"
+          },
+          "text": {
+            "$value": "{semantic.color.brand.secondary-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.brand.secondary}"
+          }
+        },
+        "success": {
+          "background": {
+            "$value": "{semantic.color.feedback.success-subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.success-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.success-border}"
+          }
+        },
+        "warning": {
+          "background": {
+            "$value": "{semantic.color.feedback.warning-subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.warning-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.warning-border}"
+          }
+        },
+        "danger": {
+          "background": {
+            "$value": "{semantic.color.feedback.danger-subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.danger-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.danger-border}"
+          }
+        },
+        "info": {
+          "background": {
+            "$value": "{semantic.color.feedback.info-subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.info-text}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.info-border}"
+          }
+        }
+      },
+      "remove": {
+        "$description": "Tag remove button.",
+        "hit-area": {
+          "$value": "{semantic.size.target.min}",
+          "$type": "dimension"
+        },
+        "icon-size": {
+          "$value": "{semantic.size.icon.xs}",
+          "$type": "dimension"
+        },
+        "color": {
+          "$type": "color",
+          "background": {
+            "hover": {
+              "$value": "{semantic.color.background.hover}"
+            },
+            "active": {
+              "$value": "{semantic.color.background.pressed}"
+            }
+          }
+        }
+      }
+    },
+    "avatar": {
+      "$description": "Atom - Avatar (user menu, table owner column).",
+      "size": {
+        "xs": {
+          "$value": "{semantic.size.avatar.xs}",
+          "$type": "dimension"
+        },
+        "sm": {
+          "$value": "{semantic.size.avatar.sm}",
+          "$type": "dimension"
+        },
+        "md": {
+          "$value": "{semantic.size.avatar.md}",
+          "$type": "dimension"
+        },
+        "lg": {
+          "$value": "{semantic.size.avatar.lg}",
+          "$type": "dimension"
+        },
+        "xl": {
+          "$value": "{semantic.size.avatar.xl}",
+          "$type": "dimension"
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.full}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{semantic.typography.label-md}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.brand.secondary-muted}"
+        },
+        "text": {
+          "$value": "{semantic.color.brand.secondary-text}"
+        },
+        "border": {
+          "$value": "{semantic.color.background.default}",
+          "$description": "Ring separating stacked avatars."
+        }
+      }
+    },
+    "tooltip": {
+      "$description": "Atom - Tooltip (chart hovers, truncated labels, icon buttons).",
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.inverse}"
+        },
+        "text": {
+          "$value": "{semantic.color.text.inverse}"
+        }
+      },
+      "typography": {
+        "$value": "{semantic.typography.caption}",
+        "$type": "typography"
+      },
+      "padding-inline": {
+        "$value": "{semantic.padding.sm}",
+        "$type": "dimension"
+      },
+      "padding-block": {
+        "$value": "{semantic.padding.xs}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.sm}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{semantic.elevation.md}",
+        "$type": "shadow"
+      },
+      "z-index": {
+        "$value": "{semantic.z-index.tooltip}",
+        "$type": "number"
+      }
+    },
+    "link": {
+      "$description": "Atom - Inline text link.",
+      "color": {
+        "$type": "color",
+        "default": {
+          "$value": "{semantic.color.text.link}"
+        },
+        "hover": {
+          "$value": "{semantic.color.text.link-hover}"
+        },
+        "focus": {
+          "$value": "{semantic.color.border.focus}"
+        }
+      },
+      "underline-thickness": {
+        "$value": "{semantic.border.width.default}",
+        "$type": "dimension"
+      }
+    },
+    "divider": {
+      "$description": "Atom - Divider. Line thickness and color per emphasis.",
+      "thickness": {
+        "$value": "{semantic.border.width.default}",
         "$type": "dimension"
       },
       "color": {
@@ -212,6 +975,895 @@
         "strong": {
           "$value": "{semantic.color.border.strong}"
         }
+      }
+    },
+    "progress": {
+      "$description": "Atom - Progress bar (quota, goal completion).",
+      "height": {
+        "sm": {
+          "$value": "{semantic.spacing.xs}",
+          "$type": "dimension"
+        },
+        "md": {
+          "$value": "{semantic.spacing.sm}",
+          "$type": "dimension"
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.full}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "track": {
+          "$value": "{semantic.color.background.subtle}"
+        },
+        "fill": {
+          "$value": "{semantic.color.brand.primary-strong}"
+        },
+        "fill-success": {
+          "$value": "{semantic.color.feedback.success}"
+        },
+        "fill-danger": {
+          "$value": "{semantic.color.feedback.danger}"
+        }
+      }
+    },
+    "skeleton": {
+      "$description": "Atom - Loading skeleton for cards, charts and table rows.",
+      "color": {
+        "$type": "color",
+        "base": {
+          "$value": "{semantic.color.background.muted}"
+        },
+        "highlight": {
+          "$value": "{semantic.color.background.subtle}"
+        },
+        "primary": {
+          "base": {
+            "$value": "{semantic.color.brand.primary-muted}"
+          },
+          "highlight": {
+            "$value": "{semantic.color.brand.primary-subtle}"
+          }
+        },
+        "secondary": {
+          "base": {
+            "$value": "{semantic.color.brand.secondary-muted}"
+          },
+          "highlight": {
+            "$value": "{semantic.color.brand.secondary-subtle}"
+          }
+        }
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      },
+      "height": {
+        "$value": "{semantic.size.control.md}",
+        "$type": "dimension"
+      },
+      "text": {
+        "height": {
+          "$value": "{semantic.font.size.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{semantic.round.sm}",
+          "$type": "dimension"
+        }
+      },
+      "duration": {
+        "$value": "{semantic.motion.duration.loop}",
+        "$type": "duration"
+      }
+    },
+    "app-shell": {
+      "$description": "Layout - App shell: sidebar + topbar + scrollable content region.",
+      "background": {
+        "$value": "{semantic.color.background.canvas}",
+        "$type": "color"
+      },
+      "sidebar-width": {
+        "$value": "{semantic.layout.sidebar.width}",
+        "$type": "dimension"
+      },
+      "sidebar-width-collapsed": {
+        "$value": "{semantic.layout.sidebar.width-collapsed}",
+        "$type": "dimension"
+      },
+      "topbar-height": {
+        "$value": "{semantic.layout.topbar.height}",
+        "$type": "dimension"
+      }
+    },
+    "sidebar": {
+      "$description": "Layout - Sidebar navigation (light). Active item = light-orange tint + orange indicator bar.",
+      "width": {
+        "$value": "{semantic.layout.sidebar.width}",
+        "$type": "dimension"
+      },
+      "width-collapsed": {
+        "$value": "{semantic.layout.sidebar.width-collapsed}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{semantic.padding.md}",
+        "$type": "dimension"
+      },
+      "z-index": {
+        "$value": "{semantic.z-index.sidebar}",
+        "$type": "number"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.default}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "section-label": {
+          "$value": "{semantic.color.text.secondary}"
+        }
+      },
+      "section-label": {
+        "typography": {
+          "$value": "{semantic.typography.overline}",
+          "$type": "typography"
+        }
+      },
+      "item": {
+        "height": {
+          "$value": "{semantic.size.control.md}",
+          "$type": "dimension"
+        },
+        "padding-inline": {
+          "$value": "{semantic.padding.sm}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{semantic.gap.sm}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{semantic.round.md}",
+          "$type": "dimension"
+        },
+        "icon-size": {
+          "$value": "{semantic.size.icon.md}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{semantic.typography.label-md}",
+          "$type": "typography"
+        },
+        "indicator-width": {
+          "$value": "{semantic.border.width.indicator}",
+          "$type": "dimension"
+        },
+        "color": {
+          "$type": "color",
+          "background": {
+            "default": {
+              "$value": "{semantic.color.background.transparent}"
+            },
+            "hover": {
+              "$value": "{semantic.color.background.subtle}"
+            },
+            "active": {
+              "$value": "{semantic.color.background.selected}"
+            }
+          },
+          "text": {
+            "default": {
+              "$value": "{semantic.color.text.secondary}"
+            },
+            "hover": {
+              "$value": "{semantic.color.text.primary}"
+            },
+            "active": {
+              "$value": "{semantic.color.brand.primary-text}"
+            }
+          },
+          "icon": {
+            "default": {
+              "$value": "{semantic.color.icon.secondary}"
+            },
+            "hover": {
+              "$value": "{semantic.color.icon.primary}"
+            },
+            "active": {
+              "$value": "{semantic.color.brand.primary-strong}"
+            }
+          },
+          "indicator": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          }
+        }
+      }
+    },
+    "topbar": {
+      "$description": "Layout - Top app bar (page title, search, notifications, user menu).",
+      "height": {
+        "$value": "{semantic.layout.topbar.height}",
+        "$type": "dimension"
+      },
+      "padding-inline": {
+        "$value": "{semantic.layout.content.padding-inline}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.gap.md}",
+        "$type": "dimension"
+      },
+      "z-index": {
+        "$value": "{semantic.z-index.topbar}",
+        "$type": "number"
+      },
+      "typography": {
+        "$value": "{semantic.typography.h4}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.default}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "title": {
+          "$value": "{semantic.color.text.primary}"
+        },
+        "icon": {
+          "$value": "{semantic.color.icon.primary}"
+        }
+      },
+      "notification-dot": {
+        "$value": "{semantic.color.feedback.danger}",
+        "$type": "color"
+      }
+    },
+    "page": {
+      "$description": "Layout - Page / content region inside the shell.",
+      "max-width": {
+        "$value": "{semantic.layout.content.max-width}",
+        "$type": "dimension"
+      },
+      "padding-inline": {
+        "$value": "{semantic.layout.content.padding-inline}",
+        "$type": "dimension"
+      },
+      "padding-block": {
+        "$value": "{semantic.layout.content.padding-block}",
+        "$type": "dimension"
+      },
+      "section-gap": {
+        "$value": "{semantic.layout.section-gap}",
+        "$type": "dimension"
+      },
+      "grid": {
+        "columns": {
+          "$value": "{semantic.layout.columns}",
+          "$type": "number"
+        },
+        "gap": {
+          "$value": "{semantic.layout.grid.gap}",
+          "$type": "dimension"
+        },
+        "card-min-width": {
+          "$value": "{semantic.layout.grid.card-min-width}",
+          "$type": "dimension"
+        }
+      },
+      "header": {
+        "title": {
+          "$value": "{semantic.typography.h1}",
+          "$type": "typography"
+        },
+        "subtitle": {
+          "$value": "{semantic.typography.body-md}",
+          "$type": "typography"
+        },
+        "gap": {
+          "$value": "{semantic.stack.xs}",
+          "$type": "dimension"
+        },
+        "color": {
+          "$type": "color",
+          "title": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "subtitle": {
+            "$value": "{semantic.color.text.secondary}"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.canvas}"
+        }
+      }
+    },
+    "card": {
+      "$description": "Layout - Card: container for charts, lists and widgets.",
+      "padding": {
+        "$value": "{semantic.padding.lg}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.stack.md}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.lg}",
+        "$type": "dimension"
+      },
+      "border-width": {
+        "$value": "{semantic.border.width.default}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$type": "shadow",
+        "default": {
+          "$value": "{semantic.elevation.sm}"
+        },
+        "hover": {
+          "$value": "{semantic.elevation.md}"
+        }
+      },
+      "title": {
+        "$value": "{semantic.typography.h4}",
+        "$type": "typography"
+      },
+      "subtitle": {
+        "$value": "{semantic.typography.body-sm}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.default}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "title": {
+          "$value": "{semantic.color.text.primary}"
+        },
+        "subtitle": {
+          "$value": "{semantic.color.text.secondary}"
+        }
+      }
+    },
+    "stat-card": {
+      "$description": "Layout - KPI / stat card: label, big value, trend delta, optional icon tile.",
+      "padding": {
+        "$value": "{semantic.padding.lg}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.stack.sm}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.lg}",
+        "$type": "dimension"
+      },
+      "label": {
+        "$value": "{semantic.typography.label-md}",
+        "$type": "typography"
+      },
+      "value": {
+        "$value": "{semantic.typography.kpi}",
+        "$type": "typography"
+      },
+      "delta": {
+        "$value": "{semantic.typography.label-sm}",
+        "$type": "typography"
+      },
+      "icon-tile-size": {
+        "$value": "{semantic.size.control.md}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.default}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "label": {
+          "$value": "{semantic.color.text.secondary}"
+        },
+        "value": {
+          "$value": "{semantic.color.text.primary}"
+        },
+        "delta": {
+          "positive-text": {
+            "$value": "{semantic.color.feedback.success-text}"
+          },
+          "positive-background": {
+            "$value": "{semantic.color.feedback.success-subtle}"
+          },
+          "negative-text": {
+            "$value": "{semantic.color.feedback.danger-text}"
+          },
+          "negative-background": {
+            "$value": "{semantic.color.feedback.danger-subtle}"
+          },
+          "neutral-text": {
+            "$value": "{semantic.color.text.secondary}"
+          },
+          "neutral-background": {
+            "$value": "{semantic.color.background.subtle}"
+          }
+        },
+        "icon-tile": {
+          "primary-background": {
+            "$value": "{semantic.color.brand.primary-muted}"
+          },
+          "primary-icon": {
+            "$value": "{semantic.color.brand.primary-text}"
+          },
+          "secondary-background": {
+            "$value": "{semantic.color.brand.secondary-muted}"
+          },
+          "secondary-icon": {
+            "$value": "{semantic.color.brand.secondary-text}"
+          }
+        }
+      }
+    },
+    "table": {
+      "$description": "Layout - Data table.",
+      "cell": {
+        "padding-inline": {
+          "$value": "{semantic.padding.md}",
+          "$type": "dimension"
+        },
+        "padding-block": {
+          "$value": "{semantic.padding.sm}",
+          "$type": "dimension"
+        },
+        "height": {
+          "$value": "{semantic.size.control.lg}",
+          "$type": "dimension"
+        },
+        "height-compact": {
+          "$value": "{semantic.size.control.md}",
+          "$type": "dimension"
+        }
+      },
+      "header": {
+        "typography": {
+          "$value": "{semantic.typography.label-sm}",
+          "$type": "typography"
+        }
+      },
+      "body": {
+        "typography": {
+          "$value": "{semantic.typography.body-sm}",
+          "$type": "typography"
+        },
+        "numeric": {
+          "$value": "{semantic.typography.code}",
+          "$type": "typography"
+        }
+      },
+      "border-width": {
+        "$value": "{semantic.border.width.default}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "header": {
+          "background": {
+            "$value": "{semantic.color.background.subtle}"
+          },
+          "text": {
+            "$value": "{semantic.color.text.secondary}"
+          }
+        },
+        "row": {
+          "background": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "background-hover": {
+            "$value": "{semantic.color.background.canvas}"
+          },
+          "background-selected": {
+            "$value": "{semantic.color.background.selected}"
+          },
+          "background-striped": {
+            "$value": "{semantic.color.background.canvas}"
+          },
+          "border": {
+            "$value": "{semantic.color.border.default}"
+          }
+        },
+        "text": {
+          "default": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "secondary": {
+            "$value": "{semantic.color.text.secondary}"
+          }
+        },
+        "sort-icon": {
+          "default": {
+            "$value": "{semantic.color.icon.secondary}"
+          },
+          "active": {
+            "$value": "{semantic.color.brand.primary-strong}"
+          }
+        }
+      }
+    },
+    "tabs": {
+      "$description": "Layout - Tabs (switch dashboard views / time ranges).",
+      "height": {
+        "$value": "{semantic.size.control.md}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.gap.lg}",
+        "$type": "dimension"
+      },
+      "padding-inline": {
+        "$value": "{semantic.padding.xs}",
+        "$type": "dimension"
+      },
+      "indicator-height": {
+        "$value": "{semantic.border.width.strong}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{semantic.typography.label-md}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "text": {
+          "default": {
+            "$value": "{semantic.color.text.secondary}"
+          },
+          "hover": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "active": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "disabled": {
+            "$value": "{semantic.color.text.disabled}"
+          }
+        },
+        "indicator": {
+          "$value": "{semantic.color.brand.primary-strong}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        }
+      }
+    },
+    "segmented-control": {
+      "$description": "Layout - Segmented control (e.g. 7d / 30d / 90d range picker).",
+      "height": {
+        "$value": "{semantic.size.control.sm}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{semantic.padding.xs}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{semantic.typography.label-md}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "track": {
+          "$value": "{semantic.color.background.subtle}"
+        },
+        "item": {
+          "text": {
+            "$value": "{semantic.color.text.secondary}"
+          },
+          "text-hover": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "background-selected": {
+            "$value": "{semantic.color.background.default}"
+          },
+          "text-selected": {
+            "$value": "{semantic.color.text.primary}"
+          }
+        }
+      },
+      "shadow-selected": {
+        "$value": "{semantic.elevation.sm}",
+        "$type": "shadow"
+      }
+    },
+    "dropdown": {
+      "$description": "Layout - Dropdown menu / popover (filters, user menu).",
+      "min-width": {
+        "$value": "{semantic.layout.grid.card-min-width}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{semantic.padding.xs}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.lg}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{semantic.elevation.lg}",
+        "$type": "shadow"
+      },
+      "z-index": {
+        "$value": "{semantic.z-index.dropdown}",
+        "$type": "number"
+      },
+      "item": {
+        "height": {
+          "$value": "{semantic.size.control.sm}",
+          "$type": "dimension"
+        },
+        "padding-inline": {
+          "$value": "{semantic.padding.sm}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{semantic.typography.body-sm}",
+          "$type": "typography"
+        },
+        "radius": {
+          "$value": "{semantic.round.sm}",
+          "$type": "dimension"
+        }
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.raised}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "item": {
+          "text": {
+            "$value": "{semantic.color.text.primary}"
+          },
+          "background-hover": {
+            "$value": "{semantic.color.background.subtle}"
+          },
+          "background-selected": {
+            "$value": "{semantic.color.background.selected}"
+          },
+          "text-selected": {
+            "$value": "{semantic.color.brand.primary-text}"
+          },
+          "text-danger": {
+            "$value": "{semantic.color.feedback.danger-text}"
+          }
+        }
+      }
+    },
+    "modal": {
+      "$description": "Layout - Modal / dialog.",
+      "width": {
+        "sm": {
+          "$value": "{semantic.layout.breakpoint.sm}",
+          "$type": "dimension"
+        },
+        "md": {
+          "$value": "{semantic.layout.breakpoint.md}",
+          "$type": "dimension"
+        }
+      },
+      "padding": {
+        "$value": "{semantic.padding.lg}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.stack.lg}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.xl}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{semantic.elevation.xl}",
+        "$type": "shadow"
+      },
+      "z-index": {
+        "$value": "{semantic.z-index.modal}",
+        "$type": "number"
+      },
+      "title": {
+        "$value": "{semantic.typography.h3}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.raised}"
+        },
+        "overlay": {
+          "$value": "{semantic.color.background.overlay}"
+        },
+        "title": {
+          "$value": "{semantic.color.text.primary}"
+        },
+        "body": {
+          "$value": "{semantic.color.text.secondary}"
+        },
+        "border": {
+          "$value": "{semantic.color.border.default}"
+        }
+      }
+    },
+    "alert": {
+      "$description": "Layout - Inline alert / banner.",
+      "padding": {
+        "$value": "{semantic.padding.md}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{semantic.gap.sm}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{semantic.round.md}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{semantic.typography.body-sm}",
+        "$type": "typography"
+      },
+      "color": {
+        "$type": "color",
+        "success": {
+          "background": {
+            "$value": "{semantic.color.feedback.success-subtle}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.success-border}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.success-text}"
+          },
+          "icon": {
+            "$value": "{semantic.color.feedback.success-text}"
+          }
+        },
+        "warning": {
+          "background": {
+            "$value": "{semantic.color.feedback.warning-subtle}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.warning-border}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.warning-text}"
+          },
+          "icon": {
+            "$value": "{semantic.color.feedback.warning-text}"
+          }
+        },
+        "danger": {
+          "background": {
+            "$value": "{semantic.color.feedback.danger-subtle}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.danger-border}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.danger-text}"
+          },
+          "icon": {
+            "$value": "{semantic.color.feedback.danger-text}"
+          }
+        },
+        "info": {
+          "background": {
+            "$value": "{semantic.color.feedback.info-subtle}"
+          },
+          "border": {
+            "$value": "{semantic.color.feedback.info-border}"
+          },
+          "text": {
+            "$value": "{semantic.color.feedback.info-text}"
+          },
+          "icon": {
+            "$value": "{semantic.color.feedback.info-text}"
+          }
+        }
+      }
+    },
+    "chart": {
+      "$description": "Layout - Chart container inside a card.",
+      "min-height": {
+        "$value": "{semantic.layout.grid.card-min-width}",
+        "$type": "dimension"
+      },
+      "axis-label": {
+        "$value": "{semantic.typography.caption}",
+        "$type": "typography"
+      },
+      "stroke-width": {
+        "$value": "{semantic.border.width.strong}",
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "series": {
+          "1": {
+            "$value": "{semantic.color.data-viz.categorical.1}"
+          },
+          "2": {
+            "$value": "{semantic.color.data-viz.categorical.2}"
+          },
+          "3": {
+            "$value": "{semantic.color.data-viz.categorical.3}"
+          },
+          "4": {
+            "$value": "{semantic.color.data-viz.categorical.4}"
+          },
+          "5": {
+            "$value": "{semantic.color.data-viz.categorical.5}"
+          },
+          "6": {
+            "$value": "{semantic.color.data-viz.categorical.6}"
+          },
+          "7": {
+            "$value": "{semantic.color.data-viz.categorical.7}"
+          },
+          "8": {
+            "$value": "{semantic.color.data-viz.categorical.8}"
+          }
+        },
+        "grid": {
+          "$value": "{semantic.color.data-viz.grid}"
+        },
+        "axis": {
+          "$value": "{semantic.color.data-viz.axis}"
+        },
+        "label": {
+          "$value": "{semantic.color.data-viz.label}"
+        },
+        "positive": {
+          "$value": "{semantic.color.data-viz.positive}"
+        },
+        "negative": {
+          "$value": "{semantic.color.data-viz.negative}"
+        }
+      },
+      "tooltip": {
+        "background": {
+          "$value": "{semantic.color.background.inverse}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{semantic.color.text.inverse}",
+          "$type": "color"
+        }
+      },
+      "transition": {
+        "$value": "{semantic.motion.duration.chart}",
+        "$type": "duration"
       }
     }
   }
