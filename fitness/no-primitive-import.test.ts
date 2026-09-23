@@ -2,12 +2,15 @@ import { Project, SyntaxKind } from 'ts-morph';
 import { describe, it, expect } from 'vitest';
 import path from 'node:path';
 
-const styleFilesPaths = ['packages/components/src/Atoms/**/*.style.ts'];
+const styleFilesPaths = [
+  'packages/components/src/Atoms/**/*.style.ts',
+  'packages/components/src/Layout/**/*.style.ts',
+];
 const stylePackage = '@cascade-ds/styles';
 const forbiddenImport = 'primitive';
 
-describe('fitness: component styles must not import `primary` from packages/styles', () => {
-  it('has no *.style.ts file importing `primary` from packages/styles', () => {
+describe('fitness: component styles must not import `primitive` from packages/styles', () => {
+  it('has no *.style.ts file importing `primitive` from packages/styles', () => {
     const project = new Project();
     const sourceFiles = project.addSourceFilesAtPaths(styleFilesPaths);
 
@@ -26,12 +29,10 @@ describe('fitness: component styles must not import `primary` from packages/styl
         if (!resolvesToPackageStyles) continue;
 
         const namedImports = importDecl.getNamedImports();
-        const importsPrimitive = namedImports.some(
-          (named) => named.getName() === forbiddenImport,
-        );
+        const importsPrimitive = namedImports.some((named) => named.getName() === forbiddenImport);
 
         const namespaceImport = importDecl.getNamespaceImport();
-        let importsPrimaryViaNamespace = false;
+        let importsPrimitiveViaNamespace = false;
 
         if (namespaceImport) {
           const alias = namespaceImport.getText();
@@ -41,10 +42,10 @@ describe('fitness: component styles must not import `primary` from packages/styl
               (node) =>
                 node.getExpression().getText() === alias && node.getName() === forbiddenImport,
             );
-          importsPrimaryViaNamespace = usages.length > 0;
+          importsPrimitiveViaNamespace = usages.length > 0;
         }
 
-        if (importsPrimitive || importsPrimaryViaNamespace) {
+        if (importsPrimitive || importsPrimitiveViaNamespace) {
           violations.push(
             `${path.relative(process.cwd(), file.getFilePath())} imports ${forbiddenImport} from "${moduleSpecifier}"`,
           );
@@ -65,5 +66,5 @@ function isRelativeImportIntoPackageStyles(
 ): boolean {
   if (!moduleSpecifier.startsWith('.')) return false;
   const resolved = path.normalize(path.join(path.dirname(currentFilePath), moduleSpecifier));
-  return resolved.includes(`${path.sep}package${path.sep}styles`);
+  return resolved.includes(`${path.sep}packages${path.sep}styles`);
 }

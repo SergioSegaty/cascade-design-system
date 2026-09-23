@@ -8,7 +8,7 @@ Accepted
 
 As more collaborators ship components into the design system, architectural
 rules that only live in documentation or in a reviewer's head (e.g. "styles
-must go through the themed layer, never import `primary` directly") are easy
+must go through the themed layer, never import `primitive` directly") are easy
 to miss. Enforcement today depends on someone noticing the violation during
 code review, which doesn't scale as the number of contributors and packages
 grows, and gives no signal at all if it slips through review.
@@ -34,10 +34,10 @@ manual review alone.
   `ts-morph` to walk the AST (imports, named/namespace usages, etc.) rather
   than regex/string matching, so they survive refactors like import
   reordering or aliasing.
-- The first rule, `no-primary-import.test.ts`, encodes that
-  `packages/components/src/Atoms/**/*.style.ts` must never import the
-  `primary` primitive from `packages/styles` — directly or via namespace
-  import — since that primitive is meant to be consumed only through the
+- The first rule, `no-primitive-import.test.ts`, encodes that
+  `packages/components/src/{ComponentFolder}/**/*.style.ts` must never import the
+  `primitive` tokens from `packages/styles` — directly or via namespace
+  import — since primitives are meant to be consumed only through the
   themed layer.
 - A violation doesn't just fail a build silently: it relays a message to a
   designated owner/channel (e.g. a Slack channel for the design system).
