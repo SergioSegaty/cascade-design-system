@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Stack } from '@/Layout/Stack';
+import { Stack } from '../../Layout/Stack';
 import Label from './Label';
 
 const meta = {
@@ -66,7 +66,12 @@ export const WithControl: Story = {
   render: (args) => (
     <Stack gap="xs">
       <Label {...args} />
-      <input id={args.htmlFor} type="email" required={args.required} disabled={args.disabled} />
+      <input
+        id={args.htmlFor}
+        type="email"
+        required={args.required}
+        disabled={args.disabled ?? false}
+      />
     </Stack>
   ),
 };

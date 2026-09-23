@@ -2,7 +2,7 @@ export { default as Box } from './Layout/Box';
 export type { BoxProps, BoxOwnProps } from './Layout/Box/Box';
 
 export { Button } from './Atoms/Button';
-export type { ButtonProps } from './Atoms/Button/Button';
+export type { ButtonProps, ButtonIconProps } from './Atoms/Button';
 
 export { Text } from './Atoms/Text';
 export type { TextProps, TextElement } from './Atoms/Text';

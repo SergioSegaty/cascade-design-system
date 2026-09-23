@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { Cross2Icon } from '@radix-ui/react-icons';
 import Box from '@/Layout/Box';
 import { tagRemoveButtonCss, tagVariant } from './Tag.style';
 import type { VariantProps } from 'class-variance-authority';
@@ -40,14 +41,7 @@ function Tag(props: TagProps) {
           aria-labelledby={buttonLabelledBy}
           onClick={onRemove}
         >
-          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path
-              d="M4.5 4.5l7 7M11.5 4.5l-7 7"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
+          <Cross2Icon aria-hidden="true" />
         </button>
       )}
     </Box>

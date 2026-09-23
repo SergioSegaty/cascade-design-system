@@ -1,12 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Stack from '@/Layout/Stack/Stack';
+import { StarFilledIcon } from '@radix-ui/react-icons';
 import Icon from './Icon';
-
-const StarSvg = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
-  </svg>
-);
 
 const meta = {
   title: 'CascadeDS/Components/Atom/Icon',
@@ -36,7 +31,7 @@ const meta = {
   args: {
     size: 'md',
     color: 'current',
-    children: <StarSvg />,
+    children: <StarFilledIcon />,
   },
 } satisfies Meta<typeof Icon>;
 

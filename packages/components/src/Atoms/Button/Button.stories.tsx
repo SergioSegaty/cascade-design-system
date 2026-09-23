@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ArrowRightIcon, PlusIcon, TrashIcon } from '@radix-ui/react-icons';
 import Button from './Button';
 
 const meta = {
@@ -81,5 +82,44 @@ export const Outline: Story = {
 export const Link: Story = {
   args: {
     variant: 'link',
+  },
+};
+
+export const WithLeadingIcon: Story = {
+  args: {
+    children: (
+      <>
+        <Button.Icon>
+          <PlusIcon />
+        </Button.Icon>
+        Add item
+      </>
+    ),
+  },
+};
+
+export const WithTrailingIcon: Story = {
+  args: {
+    variant: 'secondary',
+    children: (
+      <>
+        Continue
+        <Button.Icon>
+          <ArrowRightIcon />
+        </Button.Icon>
+      </>
+    ),
+  },
+};
+
+export const IconOnly: Story = {
+  args: {
+    variant: 'danger',
+    'aria-label': 'Delete',
+    children: (
+      <Button.Icon>
+        <TrashIcon />
+      </Button.Icon>
+    ),
   },
 };

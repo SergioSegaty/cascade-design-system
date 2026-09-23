@@ -3,8 +3,9 @@ import { createRef } from 'react';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { PlusIcon } from '@radix-ui/react-icons';
 import Button from './Button';
-import { buttonVariant } from './Button.style';
+import { buttonIconCss, buttonVariant } from './Button.style';
 
 afterEach(() => {
   cleanup();
@@ -59,6 +60,34 @@ describe('Button', () => {
     render(<Button size={size}>Click me</Button>);
 
     expectClasses(screen.getByRole('button', { name: 'Click me' }), buttonVariant({ size }));
+  });
+
+  it('renders a decorative Button.Icon without changing the accessible name', () => {
+    render(
+      <Button>
+        <Button.Icon>
+          <PlusIcon />
+        </Button.Icon>
+        Add item
+      </Button>,
+    );
+
+    const button = screen.getByRole('button', { name: 'Add item' });
+    const icon = button.querySelector('svg')!.parentElement!;
+    expect(icon).toHaveAttribute('aria-hidden', 'true');
+    expect(icon).toHaveClass(buttonIconCss);
+  });
+
+  it('names an icon-only button through aria-label', () => {
+    render(
+      <Button aria-label="Add item">
+        <Button.Icon>
+          <PlusIcon />
+        </Button.Icon>
+      </Button>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Add item' })).toBeInTheDocument();
   });
 
   it('merges a consumer className with the variant classes', () => {

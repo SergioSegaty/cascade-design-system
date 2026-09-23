@@ -184,12 +184,7 @@ const sizes = {
     font-size: ${semantic.font.size.sm};
     line-height: ${component.button.size.sm.typography.lineHeight};
     letter-spacing: ${component.button.size.sm.typography.letterSpacing};
-
-    & svg {
-      flex-shrink: 0;
-      width: ${component.button.size.sm.iconSize};
-      height: ${component.button.size.sm.iconSize};
-    }
+    --cascade-button-icon-size: ${component.button.size.sm.iconSize};
   `,
   md: css`
     min-height: ${component.button.size.md.minHeight};
@@ -198,12 +193,7 @@ const sizes = {
     font-size: ${semantic.font.size.md};
     line-height: ${component.button.size.md.typography.lineHeight};
     letter-spacing: ${component.button.size.md.typography.letterSpacing};
-
-    & svg {
-      flex-shrink: 0;
-      width: ${component.button.size.md.iconSize};
-      height: ${component.button.size.md.iconSize};
-    }
+    --cascade-button-icon-size: ${component.button.size.md.iconSize};
   `,
   lg: css`
     min-height: ${component.button.size.lg.minHeight};
@@ -212,14 +202,15 @@ const sizes = {
     font-size: ${semantic.font.size.lg};
     line-height: ${component.button.size.lg.typography.lineHeight};
     letter-spacing: ${component.button.size.lg.typography.letterSpacing};
-
-    & svg {
-      flex-shrink: 0;
-      width: ${component.button.size.lg.iconSize};
-      height: ${component.button.size.lg.iconSize};
-    }
+    --cascade-button-icon-size: ${component.button.size.lg.iconSize};
   `,
 };
+
+// Button.Icon reads the icon size its parent Button's size variant sets.
+export const buttonIconCss = css`
+  width: var(--cascade-button-icon-size);
+  height: var(--cascade-button-icon-size);
+`;
 
 export const buttonVariant = cva(baseButtonCss, {
   variants: {
