@@ -131,6 +131,35 @@ would otherwise only surface in the browser into compile errors:
   makes TypeScript flag every call site still using the old path, instead
   of relying on a repo-wide text search that can miss aliases.
 
+## Using the components
+
+Import the stylesheet **once**, in your app's entry file, before any
+component renders:
+
+```ts
+import '@cascade-ds/components/styles.css';
+```
+
+It's a single file containing the design-token custom properties followed by
+every component's styles, so tokens are always defined before the styles
+that read them. The JS bundle never imports CSS itself, so the package works
+under SSR, Jest/Vitest and any bundler without extra loaders.
+
+Wrap your app in `ThemeProvider` to control light/dark:
+
+```tsx
+import { ThemeProvider, Button } from '@cascade-ds/components';
+
+<ThemeProvider>
+  {/* follows the OS preference until setTheme() is called */}
+  <Button>Save</Button>
+</ThemeProvider>;
+
+<ThemeProvider initialMode="dark">{/* forces dark for this subtree */}</ThemeProvider>;
+```
+
+Read or change the theme anywhere below the provider with `useTheme()`.
+
 ## Getting started
 
 ```sh

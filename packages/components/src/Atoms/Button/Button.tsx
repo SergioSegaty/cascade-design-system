@@ -1,17 +1,17 @@
-import Box from '@/Atoms/Box';
+import Box from '@/Layout/Box';
 import { buttonVariant } from './Button.style';
 import type { VariantProps } from 'class-variance-authority';
 import { cx } from 'linaria';
 
-type ButtonProps = VariantProps<typeof buttonVariant> &
-  React.ButtonHTMLAttributes<HTMLButtonElement>;
+export type ButtonProps = VariantProps<typeof buttonVariant> &
+  React.ComponentPropsWithRef<'button'>;
 
 function Button(props: ButtonProps) {
-  const { size, variant, children, ...restProps } = props;
-  const buttonClassName = cx(buttonVariant({ size, variant }));
+  const { size, variant, type = 'button', className, children, ...restProps } = props;
+  const buttonClassName = cx(buttonVariant({ size, variant }), className);
 
   return (
-    <Box as="button" className={buttonClassName} {...restProps}>
+    <Box as="button" type={type} className={buttonClassName} {...restProps}>
       {children}
     </Box>
   );

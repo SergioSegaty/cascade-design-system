@@ -100,6 +100,11 @@
           "$type": "fontWeight",
           "$description": "Light font weight."
         },
+        "regular": {
+          "$value": 400,
+          "$type": "fontWeight",
+          "$description": "Regular font weight."
+        },
         "medium": {
           "$value": 500,
           "$type": "fontWeight",

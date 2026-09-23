@@ -8,18 +8,24 @@ const meta = {
   argTypes: {
     size: {
       control: 'radio',
-      options: ['small', 'medium'],
-      description: 'Controls the button padding and font size.',
+      options: ['sm', 'md', 'lg'],
+      description: 'Controls the button min-height, padding and font size.',
     },
     variant: {
       control: 'radio',
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'danger', 'ghost'],
+      description:
+        '`primary` for the main action, `secondary` for alternatives, `danger` for destructive actions, `ghost` for low-emphasis actions.',
+    },
+    disabled: {
+      control: 'boolean',
     },
   },
   args: {
     children: 'Button',
-    size: 'small',
+    size: 'md',
     variant: 'primary',
+    disabled: false,
   },
 } satisfies Meta<typeof Button>;
 
@@ -31,18 +37,37 @@ export const Default: Story = {};
 
 export const Small: Story = {
   args: {
-    size: 'small',
+    size: 'sm',
   },
 };
 
-export const Medium: Story = {
+export const Large: Story = {
   args: {
-    size: 'medium',
+    size: 'lg',
   },
 };
 
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+    children: 'Delete',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
   },
 };

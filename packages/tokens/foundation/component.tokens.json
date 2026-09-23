@@ -54,14 +54,15 @@
         "primary": {
           "$type": "color",
           "background": {
+            "$description": "Darker than semantic.color.brand.primary so on-brand text meets WCAG AA (4.5:1) in every state and theme.",
             "default": {
-              "$value": "{semantic.color.brand.primary}"
+              "$value": "{primitive.color.blue.600}"
             },
             "hover": {
-              "$value": "{semantic.color.brand.primary-hover}"
+              "$value": "{primitive.color.blue.700}"
             },
             "active": {
-              "$value": "{semantic.color.brand.primary-active}"
+              "$value": "{primitive.color.blue.800}"
             },
             "disabled": {
               "$value": "{primitive.color.gray.200}"
@@ -188,6 +189,28 @@
             "value": 1,
             "unit": "px"
           }
+        }
+      }
+    },
+    "divider": {
+      "$description": "Layer 3 - Component: Divider. Line thickness and color per emphasis, composed from semantic.color.border.",
+      "thickness": {
+        "$value": {
+          "value": 1,
+          "unit": "px"
+        },
+        "$type": "dimension"
+      },
+      "color": {
+        "$type": "color",
+        "subtle": {
+          "$value": "{semantic.color.border.subtle}"
+        },
+        "default": {
+          "$value": "{semantic.color.border.default}"
+        },
+        "strong": {
+          "$value": "{semantic.color.border.strong}"
         }
       }
     }

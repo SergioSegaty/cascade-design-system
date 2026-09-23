@@ -60,6 +60,39 @@
           "$type": "dimension",
           "$description": "Hero/display headings (h1)."
         }
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "regular": {
+          "$value": "{primitive.font.weight.regular}",
+          "$description": "Default body text."
+        },
+        "medium": {
+          "$value": "{primitive.font.weight.medium}",
+          "$description": "Interactive labels — buttons, tabs, form labels."
+        },
+        "bold": {
+          "$value": "{primitive.font.weight.bold}",
+          "$description": "Headings and strong emphasis."
+        }
+      }
+    },
+    "focus": {
+      "$description": "Keyboard focus indicator shared by every interactive component. Ring color is semantic.color.border.focus.",
+      "ring": {
+        "$type": "dimension",
+        "width": {
+          "$value": {
+            "value": 2,
+            "unit": "px"
+          }
+        },
+        "offset": {
+          "$value": {
+            "value": 2,
+            "unit": "px"
+          }
+        }
       }
     },
     "spacing": {
