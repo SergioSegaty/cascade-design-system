@@ -2,7 +2,7 @@
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
   "semantic": {
     "color": {
-      "$description": "Mode: dark. Same roles/keys as color-light. Surfaces step UP in lightness with elevation (canvas 950 -> default 900 -> raised 800). Brand stays light orange / light purple as fills with DARK text; small indicators and text use the 200-400 tints so they stay >= 3:1 / 4.5:1 on dark surfaces.",
+      "$description": "Mode: dark. Same roles/keys as color-light. Surfaces step UP in lightness with elevation (canvas 950 -> default 850 -> raised 800). Brand stays light orange / light purple as fills with DARK text; small indicators and text use the 200-400 tints so they stay >= 3:1 / 4.5:1 on dark surfaces.",
       "background": {
         "$type": "color",
         "canvas": {
@@ -10,7 +10,7 @@
           "$description": "App page background behind cards."
         },
         "default": {
-          "$value": "{primitive.color.gray.900}",
+          "$value": "{primitive.color.gray.850}",
           "$description": "Default surface: cards, panels, sidebar, topbar, inputs."
         },
         "raised": {
@@ -165,8 +165,8 @@
       "brand": {
         "$type": "color",
         "primary": {
-          "$value": "{primitive.color.orange.300}",
-          "$description": "Light orange. Fills only - pair with text.on-primary."
+          "$value": "{primitive.color.orange.800}",
+          "$description": "Dark orange. Fills only - pair with text.on-primary."
         },
         "primary-hover": {
           "$value": "{primitive.color.orange.200}",
@@ -275,7 +275,7 @@
       },
       "data-viz": {
         "$type": "color",
-        "$description": "Chart colors. Categorical series are >= 3:1 against background.default (gray.900). Same hue order as light mode.",
+        "$description": "Chart colors. Categorical series are >= 3:1 against background.default (gray.850). Same hue order as light mode.",
         "categorical": {
           "1": {
             "$value": "{primitive.color.orange.400}"

@@ -266,6 +266,16 @@
             ]
           }
         },
+        "850": {
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1333,
+              0.1373,
+              0.1451
+            ]
+          }
+        },
         "900": {
           "$value": {
             "colorSpace": "srgb",
