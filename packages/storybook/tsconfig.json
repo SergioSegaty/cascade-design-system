@@ -9,6 +9,6 @@
       "@/*": ["../components/src/*"]
     }
   },
-  "include": [".storybook/**/*.ts", "../components/src/**/*.stories.tsx"],
+  "include": [".storybook/**/*.ts", ".storybook/**/*.tsx", "../components/src/**/*.stories.tsx"],
   "exclude": ["node_modules"]
 }

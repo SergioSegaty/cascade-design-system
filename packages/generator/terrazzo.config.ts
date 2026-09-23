@@ -7,15 +7,19 @@ import cssInJs from '@terrazzo/plugin-css-in-js';
 // Single source of truth for theme names: both the CSS permutations below and
 // the `Theme` union type are derived from this array, plus a `theme-names.js`/
 // `.d.ts` pair emitted into @cascade-ds/styles for other packages to consume.
+//
+// Each theme is emitted twice: once driven by the OS preference on `:root`
+// (the default), and once under `[data-theme]` so a ThemeProvider with an
+// explicit mode overrides the OS for its subtree.
 const permutations = [
   {
     input: { theme: 'light' },
-    prepare: (contents) => `:root {\n  ${contents}\n}`,
+    prepare: (contents) => `:root,\n[data-theme='light'] {\n  ${contents}\n}`,
   },
   {
     input: { theme: 'dark' },
     prepare: (contents) =>
-      `@media (prefers-color-scheme: dark) {\n  :root {\n    ${contents}\n  }\n}`,
+      `@media (prefers-color-scheme: dark) {\n  :root {\n    ${contents}\n  }\n}\n\n[data-theme='dark'] {\n  ${contents}\n}`,
   },
 ] satisfies Permutation[];
 
